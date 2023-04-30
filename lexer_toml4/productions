@@ -1,0 +1,143 @@
+    def p_toml_stop(self, p):
+        """toml : expression"""
+        p[0] = p[1]
+        # print("Recognized toml single: ")
+
+    def p_toml(self, p):
+        """toml : toml expression"""
+        p[0] = p[1] + p[2]
+        # print("Recognized toml: ")
+
+    def p_expression_comment(self, p):
+        """expression : ws comment"""
+        p[0] = p[1]
+        # print("Recognized expression: ")
+
+    def p_expression_keyval(self, p):
+        """expression : ws key_val"""
+        p[0] = p[1]
+
+    def p_expression_keyval_comment(self, p):
+        """expression : ws key_val comment"""
+        p[0] = p[1]
+
+    def p_ws_stop(self, p):
+        """ws : ws_char"""
+        p[0] = p[1]
+
+    def p_ws(self, p):
+        """ws : ws_char ws"""
+        p[0] = p[1] + p[2]
+
+    def p_ws_char(self, p):
+        """ws_char : WHITESPACE
+                   | empty"""
+        p[0] = p[1]
+
+    def p_comment(self, p):
+        """comment : COMMENT_START comment_string"""
+        p[0] = p[2]
+        print("Recognized comment: ")
+
+    def p_comment_newline(self, p):
+        """comment : COMMENT_START comment_string NEWLINE"""
+        p[0] = p[2]
+        # print("Recognized comment: ")
+
+    def p_comment_string_stop(self, p):
+        """comment_string : comment_char"""
+        p[0] = p[1]
+
+    def p_comment_string(self, p):
+        """comment_string : comment_char comment_string"""
+        p[0] = p[1] + p[2]
+
+    def p_comment_char(self, p):
+        """comment_char : UNICODE_CHAR
+                        | UNICODE_NUMBER
+                        | UNICODE_PUNCTUATION
+                        | COMMENT_START
+                        | WHITESPACE
+                        | empty"""
+        p[0] = p[1]
+
+    def p_key_val(self, p):
+        """key_val : key ws ASSIGNMENT ws value"""
+        p[0] = p[1] + p[2] + p[3]
+        # print("Recognized key_val: ")
+
+    def p_key(self, p):
+        """key : simple_key
+              | dotted_key"""
+        p[0] = p[1]
+
+    def p_simple_key_bare(self, p):
+        """simple_key : bare_key"""
+        p[0] = p[1]
+
+    def p_simple_key_quoted(self, p):
+        """simple_key : quoted_key"""
+        p[0] = p[1]
+
+    def p_bare_key(self, p):
+        """bare_key : bare_key_sequence"""
+        p[0] = p[1]
+
+    def p_bare_key_sequence_stop(self, p):
+        """bare_key_sequence : ws bare_key_char ws"""
+        p[0] = p[1]
+
+    def p_bare_key_sequence(self, p):
+        """bare_key_sequence : bare_key_char bare_key_sequence"""
+        p[0] = p[1] + p[2]
+
+    def p_bare_key_char(self, p):
+        """bare_key_char : UNICODE_CHAR
+                         | UNICODE_NUMBER
+                         | DASH
+                         | UNDERSCORE"""
+        p[0] = p[1]
+
+    def p_quoted_key(self, p):
+        """quoted_key : basic_string"""
+        p[0] = p[1]
+
+    def p_dotted_key(self, p):
+        """dotted_key : simple_key DOT simple_key"""
+        p[0] = p[1] + p[2] + p[3]
+        # print("Recognized dotted_key: ")
+
+    def p_value(self, p):
+        """value : basic_string"""
+        p[0] = p[1]
+        # print("Recognized value: ")
+
+    def p_basic_string_empty(self, p):
+        """basic_string : BASIC_STR_QUOTE BASIC_STR_QUOTE"""
+        p[0] = p[1] + p[2]
+        # print("Recognized basic_string: ")
+
+    def p_basic_string(self, p):
+        """basic_string : BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE"""
+        p[0] = p[1] + p[2] + p[3]
+        # print("Recognized basic_string: ")
+
+    def p_basic_string_sequence_stop(self, p):
+        """basic_string_sequence : basic_string_char"""
+        p[0] = p[1]
+
+    def p_basic_string_sequence(self, p):
+        """basic_string_sequence : basic_string_char basic_string_sequence"""
+        p[0] = p[1] + p[2]
+
+    def p_basic_string_char(self, p):
+        """basic_string_char : UNICODE_CHAR
+                             | UNICODE_NUMBER
+                             | UNICODE_PUNCTUATION
+                             | NEWLINE
+                             | WHITESPACE"""
+        p[0] = p[1]
+
+    def p_empty(self, p):
+        """empty :"""
+        p[0] = ''
