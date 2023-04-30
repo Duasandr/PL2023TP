@@ -1,0 +1,253 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMA
+    COMMENT
+    FALSE
+    LEFT_BRACKET
+    LEFT_CURLY_BRACKET
+    MINUS
+    PLUS
+    RIGHT_BRACKET
+    RIGHT_CURLY_BRACKET
+    TRUE
+    UNDERSCORE
+    WS_CHAR
+
+Grammar
+
+Rule 0     S' -> toml
+Rule 1     toml -> <empty>
+Rule 2     toml -> expression
+Rule 3     toml -> expression NEWLINE toml
+Rule 4     expression -> key_val
+Rule 5     key_val -> key EQUAL value
+Rule 6     key -> simple_key
+Rule 7     key -> dotted_key
+Rule 8     simple_key -> ID
+Rule 9     simple_key -> STRING
+Rule 10    simple_key -> NUM
+Rule 11    dotted_key -> simple_key DOT simple_key
+Rule 12    value -> STRING
+Rule 13    value -> NUM
+
+Terminals, with rules where they appear
+
+COMMA                : 
+COMMENT              : 
+DOT                  : 11
+EQUAL                : 5
+FALSE                : 
+ID                   : 8
+LEFT_BRACKET         : 
+LEFT_CURLY_BRACKET   : 
+MINUS                : 
+NEWLINE              : 3
+NUM                  : 10 13
+PLUS                 : 
+RIGHT_BRACKET        : 
+RIGHT_CURLY_BRACKET  : 
+STRING               : 9 12
+TRUE                 : 
+UNDERSCORE           : 
+WS_CHAR              : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+dotted_key           : 7
+expression           : 2 3
+key                  : 5
+key_val              : 4
+simple_key           : 6 11 11
+toml                 : 3 0
+value                : 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . toml
+    (1) toml -> .
+    (2) toml -> . expression
+    (3) toml -> . expression NEWLINE toml
+    (4) expression -> . key_val
+    (5) key_val -> . key EQUAL value
+    (6) key -> . simple_key
+    (7) key -> . dotted_key
+    (8) simple_key -> . ID
+    (9) simple_key -> . STRING
+    (10) simple_key -> . NUM
+    (11) dotted_key -> . simple_key DOT simple_key
+
+    $end            reduce using rule 1 (toml -> .)
+    ID              shift and go to state 7
+    STRING          shift and go to state 8
+    NUM             shift and go to state 9
+
+    toml                           shift and go to state 1
+    expression                     shift and go to state 2
+    key_val                        shift and go to state 3
+    key                            shift and go to state 4
+    simple_key                     shift and go to state 5
+    dotted_key                     shift and go to state 6
+
+state 1
+
+    (0) S' -> toml .
+
+
+
+state 2
+
+    (2) toml -> expression .
+    (3) toml -> expression . NEWLINE toml
+
+    $end            reduce using rule 2 (toml -> expression .)
+    NEWLINE         shift and go to state 10
+
+
+state 3
+
+    (4) expression -> key_val .
+
+    NEWLINE         reduce using rule 4 (expression -> key_val .)
+    $end            reduce using rule 4 (expression -> key_val .)
+
+
+state 4
+
+    (5) key_val -> key . EQUAL value
+
+    EQUAL           shift and go to state 11
+
+
+state 5
+
+    (6) key -> simple_key .
+    (11) dotted_key -> simple_key . DOT simple_key
+
+    EQUAL           reduce using rule 6 (key -> simple_key .)
+    DOT             shift and go to state 12
+
+
+state 6
+
+    (7) key -> dotted_key .
+
+    EQUAL           reduce using rule 7 (key -> dotted_key .)
+
+
+state 7
+
+    (8) simple_key -> ID .
+
+    DOT             reduce using rule 8 (simple_key -> ID .)
+    EQUAL           reduce using rule 8 (simple_key -> ID .)
+
+
+state 8
+
+    (9) simple_key -> STRING .
+
+    DOT             reduce using rule 9 (simple_key -> STRING .)
+    EQUAL           reduce using rule 9 (simple_key -> STRING .)
+
+
+state 9
+
+    (10) simple_key -> NUM .
+
+    DOT             reduce using rule 10 (simple_key -> NUM .)
+    EQUAL           reduce using rule 10 (simple_key -> NUM .)
+
+
+state 10
+
+    (3) toml -> expression NEWLINE . toml
+    (1) toml -> .
+    (2) toml -> . expression
+    (3) toml -> . expression NEWLINE toml
+    (4) expression -> . key_val
+    (5) key_val -> . key EQUAL value
+    (6) key -> . simple_key
+    (7) key -> . dotted_key
+    (8) simple_key -> . ID
+    (9) simple_key -> . STRING
+    (10) simple_key -> . NUM
+    (11) dotted_key -> . simple_key DOT simple_key
+
+    $end            reduce using rule 1 (toml -> .)
+    ID              shift and go to state 7
+    STRING          shift and go to state 8
+    NUM             shift and go to state 9
+
+    expression                     shift and go to state 2
+    toml                           shift and go to state 13
+    key_val                        shift and go to state 3
+    key                            shift and go to state 4
+    simple_key                     shift and go to state 5
+    dotted_key                     shift and go to state 6
+
+state 11
+
+    (5) key_val -> key EQUAL . value
+    (12) value -> . STRING
+    (13) value -> . NUM
+
+    STRING          shift and go to state 15
+    NUM             shift and go to state 16
+
+    value                          shift and go to state 14
+
+state 12
+
+    (11) dotted_key -> simple_key DOT . simple_key
+    (8) simple_key -> . ID
+    (9) simple_key -> . STRING
+    (10) simple_key -> . NUM
+
+    ID              shift and go to state 7
+    STRING          shift and go to state 8
+    NUM             shift and go to state 9
+
+    simple_key                     shift and go to state 17
+
+state 13
+
+    (3) toml -> expression NEWLINE toml .
+
+    $end            reduce using rule 3 (toml -> expression NEWLINE toml .)
+
+
+state 14
+
+    (5) key_val -> key EQUAL value .
+
+    NEWLINE         reduce using rule 5 (key_val -> key EQUAL value .)
+    $end            reduce using rule 5 (key_val -> key EQUAL value .)
+
+
+state 15
+
+    (12) value -> STRING .
+
+    NEWLINE         reduce using rule 12 (value -> STRING .)
+    $end            reduce using rule 12 (value -> STRING .)
+
+
+state 16
+
+    (13) value -> NUM .
+
+    NEWLINE         reduce using rule 13 (value -> NUM .)
+    $end            reduce using rule 13 (value -> NUM .)
+
+
+state 17
+
+    (11) dotted_key -> simple_key DOT simple_key .
+
+    EQUAL           reduce using rule 11 (dotted_key -> simple_key DOT simple_key .)
+

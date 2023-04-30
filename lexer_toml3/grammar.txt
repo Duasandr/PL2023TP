@@ -1,0 +1,94 @@
+  """
+    toml : expression_list
+
+    expression_list : NEWLINE expression_list
+                | expression NEWLINE expression_list
+                | expression
+
+    expression : comment
+                | key_val
+                | key_val comment
+
+    comment : COMMENT_START comment_string
+
+    comment_string : comment_char
+                        | comment_char comment_string
+
+    comment_char :  ASCII_CHAR
+                    | UNICODE_CHAR
+                    | UNICODE_NUMBER
+                    | UNICODE_PUNCTUATION
+                    | COMMENT_START
+                    | DASH
+                    | UNDERSCORE
+                    | WHITESPACE
+
+    key_val : key ASSIGNMENT value
+
+    key : simple_key
+        | dotted_key
+
+    simple_key : bare_key
+                | quoted_key
+
+    bare_key : bare_key_sequence
+
+    bare_key_sequence : bare_key_char
+                        | bare_key_char bare_key_sequence
+
+    bare_key_char : ASCII_CHAR
+                    | UNICODE_NUMBER
+                    | DASH
+                    | UNDERSCORE
+
+    quoted_key : basic_string
+                | literal_string
+
+    dotted_key : simple_key DOT simple_key
+
+    value : basic_string
+            | literal_string
+
+    basic_string : BASIC_STR_QUOTE BASIC_STR_QUOTE
+                    |   BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE
+
+    basic_string_sequence : basic_string_char
+                            | basic_string_char basic_string_sequence
+
+    basic_string_char : ASCII_CHAR
+                        | UNICODE_CHAR
+                        | UNICODE_NUMBER
+                        | UNICODE_PUNCTUATION
+                        | UNICODE_CONTROL
+                        | UNICODE_SYMBOL
+                        | UNICODE_SEPARATOR
+                        | UNICODE_PRIVATE_USE
+                        | LITERAL_STR_QUOTE
+                        | DASH
+                        | UNDERSCORE
+                        | WHITESPACE
+                        | DOT
+                        | COMMENT_START
+
+    literal_string : LITERAL_STR_QUOTE LITERAL_STR_QUOTE
+                    | LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE
+
+    literal_string_sequence : literal_string_char
+                            | literal_string_char literal_string_sequence
+
+    literal_string_char : ASCII_CHAR
+                        | UNICODE_CHAR
+                        | UNICODE_NUMBER
+                        | UNICODE_PUNCTUATION
+                        | UNICODE_CONTROL
+                        | UNICODE_SYMBOL
+                        | UNICODE_SEPARATOR
+                        | UNICODE_PRIVATE_USE
+                        | BASIC_STR_QUOTE
+                        | DASH
+                        | UNDERSCORE
+                        | WHITESPACE
+                        | DOT
+                        | COMMENT_START
+                        | NEWLINE
+                        """

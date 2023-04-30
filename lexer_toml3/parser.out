@@ -1,0 +1,1592 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> toml
+Rule 1     toml -> expression_list
+Rule 2     expression_list -> NEWLINE expression_list
+Rule 3     expression_list -> expression NEWLINE expression_list
+Rule 4     expression_list -> expression
+Rule 5     expression -> comment
+Rule 6     expression -> key_val
+Rule 7     expression -> key_val comment
+Rule 8     comment -> COMMENT_START comment_string
+Rule 9     comment_string -> comment_char
+Rule 10    comment_string -> comment_char comment_string
+Rule 11    comment_char -> ASCII_CHAR
+Rule 12    comment_char -> UNICODE_CHAR
+Rule 13    comment_char -> UNICODE_NUMBER
+Rule 14    comment_char -> UNICODE_PUNCTUATION
+Rule 15    comment_char -> COMMENT_START
+Rule 16    comment_char -> DASH
+Rule 17    comment_char -> UNDERSCORE
+Rule 18    comment_char -> WHITESPACE
+Rule 19    key_val -> key ASSIGNMENT value
+Rule 20    key -> simple_key
+Rule 21    key -> dotted_key
+Rule 22    simple_key -> bare_key
+Rule 23    simple_key -> quoted_key
+Rule 24    bare_key -> bare_key_sequence
+Rule 25    bare_key_sequence -> bare_key_char
+Rule 26    bare_key_sequence -> bare_key_char bare_key_sequence
+Rule 27    bare_key_char -> ASCII_CHAR
+Rule 28    bare_key_char -> UNICODE_NUMBER
+Rule 29    bare_key_char -> DASH
+Rule 30    bare_key_char -> UNDERSCORE
+Rule 31    quoted_key -> basic_string
+Rule 32    quoted_key -> literal_string
+Rule 33    dotted_key -> simple_key DOT simple_key
+Rule 34    value -> basic_string
+Rule 35    value -> literal_string
+Rule 36    basic_string -> BASIC_STR_QUOTE BASIC_STR_QUOTE
+Rule 37    basic_string -> BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE
+Rule 38    basic_string_sequence -> basic_string_char
+Rule 39    basic_string_sequence -> basic_string_char basic_string_sequence
+Rule 40    basic_string_char -> ASCII_CHAR
+Rule 41    basic_string_char -> UNICODE_CHAR
+Rule 42    basic_string_char -> UNICODE_NUMBER
+Rule 43    basic_string_char -> UNICODE_PUNCTUATION
+Rule 44    basic_string_char -> UNICODE_CONTROL
+Rule 45    basic_string_char -> UNICODE_SYMBOL
+Rule 46    basic_string_char -> UNICODE_SEPARATOR
+Rule 47    basic_string_char -> UNICODE_PRIVATE_USE
+Rule 48    basic_string_char -> LITERAL_STR_QUOTE
+Rule 49    basic_string_char -> DASH
+Rule 50    basic_string_char -> UNDERSCORE
+Rule 51    basic_string_char -> WHITESPACE
+Rule 52    basic_string_char -> DOT
+Rule 53    basic_string_char -> COMMENT_START
+Rule 54    literal_string -> LITERAL_STR_QUOTE LITERAL_STR_QUOTE
+Rule 55    literal_string -> LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE
+Rule 56    literal_string_sequence -> literal_string_char
+Rule 57    literal_string_sequence -> literal_string_char literal_string_sequence
+Rule 58    literal_string_char -> ASCII_CHAR
+Rule 59    literal_string_char -> UNICODE_CHAR
+Rule 60    literal_string_char -> UNICODE_NUMBER
+Rule 61    literal_string_char -> UNICODE_PUNCTUATION
+Rule 62    literal_string_char -> UNICODE_CONTROL
+Rule 63    literal_string_char -> UNICODE_SYMBOL
+Rule 64    literal_string_char -> UNICODE_SEPARATOR
+Rule 65    literal_string_char -> UNICODE_PRIVATE_USE
+Rule 66    literal_string_char -> BASIC_STR_QUOTE
+Rule 67    literal_string_char -> DASH
+Rule 68    literal_string_char -> UNDERSCORE
+Rule 69    literal_string_char -> WHITESPACE
+Rule 70    literal_string_char -> DOT
+Rule 71    literal_string_char -> COMMENT_START
+
+Terminals, with rules where they appear
+
+ASCII_CHAR           : 11 27 40 58
+ASSIGNMENT           : 19
+BASIC_STR_QUOTE      : 36 36 37 37 66
+COMMENT_START        : 8 15 53 71
+DASH                 : 16 29 49 67
+DOT                  : 33 52 70
+LITERAL_STR_QUOTE    : 48 54 54 55 55
+NEWLINE              : 2 3
+UNDERSCORE           : 17 30 50 68
+UNICODE_CHAR         : 12 41 59
+UNICODE_CONTROL      : 44 62
+UNICODE_NUMBER       : 13 28 42 60
+UNICODE_PRIVATE_USE  : 47 65
+UNICODE_PUNCTUATION  : 14 43 61
+UNICODE_SEPARATOR    : 46 64
+UNICODE_SYMBOL       : 45 63
+WHITESPACE           : 18 51 69
+error                : 
+
+Nonterminals, with rules where they appear
+
+bare_key             : 22
+bare_key_char        : 25 26
+bare_key_sequence    : 24 26
+basic_string         : 31 34
+basic_string_char    : 38 39
+basic_string_sequence : 37 39
+comment              : 5 7
+comment_char         : 9 10
+comment_string       : 8 10
+dotted_key           : 21
+expression           : 3 4
+expression_list      : 1 2 3
+key                  : 19
+key_val              : 6 7
+literal_string       : 32 35
+literal_string_char  : 56 57
+literal_string_sequence : 55 57
+quoted_key           : 23
+simple_key           : 20 33 33
+toml                 : 0
+value                : 19
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . toml
+    (1) toml -> . expression_list
+    (2) expression_list -> . NEWLINE expression_list
+    (3) expression_list -> . expression NEWLINE expression_list
+    (4) expression_list -> . expression
+    (5) expression -> . comment
+    (6) expression -> . key_val
+    (7) expression -> . key_val comment
+    (8) comment -> . COMMENT_START comment_string
+    (19) key_val -> . key ASSIGNMENT value
+    (20) key -> . simple_key
+    (21) key -> . dotted_key
+    (22) simple_key -> . bare_key
+    (23) simple_key -> . quoted_key
+    (33) dotted_key -> . simple_key DOT simple_key
+    (24) bare_key -> . bare_key_sequence
+    (31) quoted_key -> . basic_string
+    (32) quoted_key -> . literal_string
+    (25) bare_key_sequence -> . bare_key_char
+    (26) bare_key_sequence -> . bare_key_char bare_key_sequence
+    (36) basic_string -> . BASIC_STR_QUOTE BASIC_STR_QUOTE
+    (37) basic_string -> . BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE
+    (54) literal_string -> . LITERAL_STR_QUOTE LITERAL_STR_QUOTE
+    (55) literal_string -> . LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE
+    (27) bare_key_char -> . ASCII_CHAR
+    (28) bare_key_char -> . UNICODE_NUMBER
+    (29) bare_key_char -> . DASH
+    (30) bare_key_char -> . UNDERSCORE
+
+    NEWLINE         shift and go to state 3
+    COMMENT_START   shift and go to state 7
+    BASIC_STR_QUOTE shift and go to state 17
+    LITERAL_STR_QUOTE shift and go to state 18
+    ASCII_CHAR      shift and go to state 19
+    UNICODE_NUMBER  shift and go to state 20
+    DASH            shift and go to state 21
+    UNDERSCORE      shift and go to state 22
+
+    toml                           shift and go to state 1
+    expression_list                shift and go to state 2
+    expression                     shift and go to state 4
+    comment                        shift and go to state 5
+    key_val                        shift and go to state 6
+    key                            shift and go to state 8
+    simple_key                     shift and go to state 9
+    dotted_key                     shift and go to state 10
+    bare_key                       shift and go to state 11
+    quoted_key                     shift and go to state 12
+    bare_key_sequence              shift and go to state 13
+    basic_string                   shift and go to state 14
+    literal_string                 shift and go to state 15
+    bare_key_char                  shift and go to state 16
+
+state 1
+
+    (0) S' -> toml .
+
+
+
+state 2
+
+    (1) toml -> expression_list .
+
+    $end            reduce using rule 1 (toml -> expression_list .)
+
+
+state 3
+
+    (2) expression_list -> NEWLINE . expression_list
+    (2) expression_list -> . NEWLINE expression_list
+    (3) expression_list -> . expression NEWLINE expression_list
+    (4) expression_list -> . expression
+    (5) expression -> . comment
+    (6) expression -> . key_val
+    (7) expression -> . key_val comment
+    (8) comment -> . COMMENT_START comment_string
+    (19) key_val -> . key ASSIGNMENT value
+    (20) key -> . simple_key
+    (21) key -> . dotted_key
+    (22) simple_key -> . bare_key
+    (23) simple_key -> . quoted_key
+    (33) dotted_key -> . simple_key DOT simple_key
+    (24) bare_key -> . bare_key_sequence
+    (31) quoted_key -> . basic_string
+    (32) quoted_key -> . literal_string
+    (25) bare_key_sequence -> . bare_key_char
+    (26) bare_key_sequence -> . bare_key_char bare_key_sequence
+    (36) basic_string -> . BASIC_STR_QUOTE BASIC_STR_QUOTE
+    (37) basic_string -> . BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE
+    (54) literal_string -> . LITERAL_STR_QUOTE LITERAL_STR_QUOTE
+    (55) literal_string -> . LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE
+    (27) bare_key_char -> . ASCII_CHAR
+    (28) bare_key_char -> . UNICODE_NUMBER
+    (29) bare_key_char -> . DASH
+    (30) bare_key_char -> . UNDERSCORE
+
+    NEWLINE         shift and go to state 3
+    COMMENT_START   shift and go to state 7
+    BASIC_STR_QUOTE shift and go to state 17
+    LITERAL_STR_QUOTE shift and go to state 18
+    ASCII_CHAR      shift and go to state 19
+    UNICODE_NUMBER  shift and go to state 20
+    DASH            shift and go to state 21
+    UNDERSCORE      shift and go to state 22
+
+    expression_list                shift and go to state 23
+    expression                     shift and go to state 4
+    comment                        shift and go to state 5
+    key_val                        shift and go to state 6
+    key                            shift and go to state 8
+    simple_key                     shift and go to state 9
+    dotted_key                     shift and go to state 10
+    bare_key                       shift and go to state 11
+    quoted_key                     shift and go to state 12
+    bare_key_sequence              shift and go to state 13
+    basic_string                   shift and go to state 14
+    literal_string                 shift and go to state 15
+    bare_key_char                  shift and go to state 16
+
+state 4
+
+    (3) expression_list -> expression . NEWLINE expression_list
+    (4) expression_list -> expression .
+
+    NEWLINE         shift and go to state 24
+    $end            reduce using rule 4 (expression_list -> expression .)
+
+
+state 5
+
+    (5) expression -> comment .
+
+    NEWLINE         reduce using rule 5 (expression -> comment .)
+    $end            reduce using rule 5 (expression -> comment .)
+
+
+state 6
+
+    (6) expression -> key_val .
+    (7) expression -> key_val . comment
+    (8) comment -> . COMMENT_START comment_string
+
+    NEWLINE         reduce using rule 6 (expression -> key_val .)
+    $end            reduce using rule 6 (expression -> key_val .)
+    COMMENT_START   shift and go to state 7
+
+    comment                        shift and go to state 25
+
+state 7
+
+    (8) comment -> COMMENT_START . comment_string
+    (9) comment_string -> . comment_char
+    (10) comment_string -> . comment_char comment_string
+    (11) comment_char -> . ASCII_CHAR
+    (12) comment_char -> . UNICODE_CHAR
+    (13) comment_char -> . UNICODE_NUMBER
+    (14) comment_char -> . UNICODE_PUNCTUATION
+    (15) comment_char -> . COMMENT_START
+    (16) comment_char -> . DASH
+    (17) comment_char -> . UNDERSCORE
+    (18) comment_char -> . WHITESPACE
+
+    ASCII_CHAR      shift and go to state 29
+    UNICODE_CHAR    shift and go to state 30
+    UNICODE_NUMBER  shift and go to state 31
+    UNICODE_PUNCTUATION shift and go to state 32
+    COMMENT_START   shift and go to state 26
+    DASH            shift and go to state 33
+    UNDERSCORE      shift and go to state 34
+    WHITESPACE      shift and go to state 35
+
+    comment_string                 shift and go to state 27
+    comment_char                   shift and go to state 28
+
+state 8
+
+    (19) key_val -> key . ASSIGNMENT value
+
+    ASSIGNMENT      shift and go to state 36
+
+
+state 9
+
+    (20) key -> simple_key .
+    (33) dotted_key -> simple_key . DOT simple_key
+
+    ASSIGNMENT      reduce using rule 20 (key -> simple_key .)
+    DOT             shift and go to state 37
+
+
+state 10
+
+    (21) key -> dotted_key .
+
+    ASSIGNMENT      reduce using rule 21 (key -> dotted_key .)
+
+
+state 11
+
+    (22) simple_key -> bare_key .
+
+    DOT             reduce using rule 22 (simple_key -> bare_key .)
+    ASSIGNMENT      reduce using rule 22 (simple_key -> bare_key .)
+
+
+state 12
+
+    (23) simple_key -> quoted_key .
+
+    DOT             reduce using rule 23 (simple_key -> quoted_key .)
+    ASSIGNMENT      reduce using rule 23 (simple_key -> quoted_key .)
+
+
+state 13
+
+    (24) bare_key -> bare_key_sequence .
+
+    DOT             reduce using rule 24 (bare_key -> bare_key_sequence .)
+    ASSIGNMENT      reduce using rule 24 (bare_key -> bare_key_sequence .)
+
+
+state 14
+
+    (31) quoted_key -> basic_string .
+
+    DOT             reduce using rule 31 (quoted_key -> basic_string .)
+    ASSIGNMENT      reduce using rule 31 (quoted_key -> basic_string .)
+
+
+state 15
+
+    (32) quoted_key -> literal_string .
+
+    DOT             reduce using rule 32 (quoted_key -> literal_string .)
+    ASSIGNMENT      reduce using rule 32 (quoted_key -> literal_string .)
+
+
+state 16
+
+    (25) bare_key_sequence -> bare_key_char .
+    (26) bare_key_sequence -> bare_key_char . bare_key_sequence
+    (25) bare_key_sequence -> . bare_key_char
+    (26) bare_key_sequence -> . bare_key_char bare_key_sequence
+    (27) bare_key_char -> . ASCII_CHAR
+    (28) bare_key_char -> . UNICODE_NUMBER
+    (29) bare_key_char -> . DASH
+    (30) bare_key_char -> . UNDERSCORE
+
+    DOT             reduce using rule 25 (bare_key_sequence -> bare_key_char .)
+    ASSIGNMENT      reduce using rule 25 (bare_key_sequence -> bare_key_char .)
+    ASCII_CHAR      shift and go to state 19
+    UNICODE_NUMBER  shift and go to state 20
+    DASH            shift and go to state 21
+    UNDERSCORE      shift and go to state 22
+
+    bare_key_char                  shift and go to state 16
+    bare_key_sequence              shift and go to state 38
+
+state 17
+
+    (36) basic_string -> BASIC_STR_QUOTE . BASIC_STR_QUOTE
+    (37) basic_string -> BASIC_STR_QUOTE . basic_string_sequence BASIC_STR_QUOTE
+    (38) basic_string_sequence -> . basic_string_char
+    (39) basic_string_sequence -> . basic_string_char basic_string_sequence
+    (40) basic_string_char -> . ASCII_CHAR
+    (41) basic_string_char -> . UNICODE_CHAR
+    (42) basic_string_char -> . UNICODE_NUMBER
+    (43) basic_string_char -> . UNICODE_PUNCTUATION
+    (44) basic_string_char -> . UNICODE_CONTROL
+    (45) basic_string_char -> . UNICODE_SYMBOL
+    (46) basic_string_char -> . UNICODE_SEPARATOR
+    (47) basic_string_char -> . UNICODE_PRIVATE_USE
+    (48) basic_string_char -> . LITERAL_STR_QUOTE
+    (49) basic_string_char -> . DASH
+    (50) basic_string_char -> . UNDERSCORE
+    (51) basic_string_char -> . WHITESPACE
+    (52) basic_string_char -> . DOT
+    (53) basic_string_char -> . COMMENT_START
+
+    BASIC_STR_QUOTE shift and go to state 39
+    ASCII_CHAR      shift and go to state 42
+    UNICODE_CHAR    shift and go to state 43
+    UNICODE_NUMBER  shift and go to state 44
+    UNICODE_PUNCTUATION shift and go to state 45
+    UNICODE_CONTROL shift and go to state 46
+    UNICODE_SYMBOL  shift and go to state 47
+    UNICODE_SEPARATOR shift and go to state 48
+    UNICODE_PRIVATE_USE shift and go to state 49
+    LITERAL_STR_QUOTE shift and go to state 50
+    DASH            shift and go to state 51
+    UNDERSCORE      shift and go to state 52
+    WHITESPACE      shift and go to state 53
+    DOT             shift and go to state 54
+    COMMENT_START   shift and go to state 55
+
+    basic_string_sequence          shift and go to state 40
+    basic_string_char              shift and go to state 41
+
+state 18
+
+    (54) literal_string -> LITERAL_STR_QUOTE . LITERAL_STR_QUOTE
+    (55) literal_string -> LITERAL_STR_QUOTE . literal_string_sequence LITERAL_STR_QUOTE
+    (56) literal_string_sequence -> . literal_string_char
+    (57) literal_string_sequence -> . literal_string_char literal_string_sequence
+    (58) literal_string_char -> . ASCII_CHAR
+    (59) literal_string_char -> . UNICODE_CHAR
+    (60) literal_string_char -> . UNICODE_NUMBER
+    (61) literal_string_char -> . UNICODE_PUNCTUATION
+    (62) literal_string_char -> . UNICODE_CONTROL
+    (63) literal_string_char -> . UNICODE_SYMBOL
+    (64) literal_string_char -> . UNICODE_SEPARATOR
+    (65) literal_string_char -> . UNICODE_PRIVATE_USE
+    (66) literal_string_char -> . BASIC_STR_QUOTE
+    (67) literal_string_char -> . DASH
+    (68) literal_string_char -> . UNDERSCORE
+    (69) literal_string_char -> . WHITESPACE
+    (70) literal_string_char -> . DOT
+    (71) literal_string_char -> . COMMENT_START
+
+    LITERAL_STR_QUOTE shift and go to state 56
+    ASCII_CHAR      shift and go to state 59
+    UNICODE_CHAR    shift and go to state 60
+    UNICODE_NUMBER  shift and go to state 61
+    UNICODE_PUNCTUATION shift and go to state 62
+    UNICODE_CONTROL shift and go to state 63
+    UNICODE_SYMBOL  shift and go to state 64
+    UNICODE_SEPARATOR shift and go to state 65
+    UNICODE_PRIVATE_USE shift and go to state 66
+    BASIC_STR_QUOTE shift and go to state 67
+    DASH            shift and go to state 68
+    UNDERSCORE      shift and go to state 69
+    WHITESPACE      shift and go to state 70
+    DOT             shift and go to state 71
+    COMMENT_START   shift and go to state 72
+
+    literal_string_sequence        shift and go to state 57
+    literal_string_char            shift and go to state 58
+
+state 19
+
+    (27) bare_key_char -> ASCII_CHAR .
+
+    ASCII_CHAR      reduce using rule 27 (bare_key_char -> ASCII_CHAR .)
+    UNICODE_NUMBER  reduce using rule 27 (bare_key_char -> ASCII_CHAR .)
+    DASH            reduce using rule 27 (bare_key_char -> ASCII_CHAR .)
+    UNDERSCORE      reduce using rule 27 (bare_key_char -> ASCII_CHAR .)
+    DOT             reduce using rule 27 (bare_key_char -> ASCII_CHAR .)
+    ASSIGNMENT      reduce using rule 27 (bare_key_char -> ASCII_CHAR .)
+
+
+state 20
+
+    (28) bare_key_char -> UNICODE_NUMBER .
+
+    ASCII_CHAR      reduce using rule 28 (bare_key_char -> UNICODE_NUMBER .)
+    UNICODE_NUMBER  reduce using rule 28 (bare_key_char -> UNICODE_NUMBER .)
+    DASH            reduce using rule 28 (bare_key_char -> UNICODE_NUMBER .)
+    UNDERSCORE      reduce using rule 28 (bare_key_char -> UNICODE_NUMBER .)
+    DOT             reduce using rule 28 (bare_key_char -> UNICODE_NUMBER .)
+    ASSIGNMENT      reduce using rule 28 (bare_key_char -> UNICODE_NUMBER .)
+
+
+state 21
+
+    (29) bare_key_char -> DASH .
+
+    ASCII_CHAR      reduce using rule 29 (bare_key_char -> DASH .)
+    UNICODE_NUMBER  reduce using rule 29 (bare_key_char -> DASH .)
+    DASH            reduce using rule 29 (bare_key_char -> DASH .)
+    UNDERSCORE      reduce using rule 29 (bare_key_char -> DASH .)
+    DOT             reduce using rule 29 (bare_key_char -> DASH .)
+    ASSIGNMENT      reduce using rule 29 (bare_key_char -> DASH .)
+
+
+state 22
+
+    (30) bare_key_char -> UNDERSCORE .
+
+    ASCII_CHAR      reduce using rule 30 (bare_key_char -> UNDERSCORE .)
+    UNICODE_NUMBER  reduce using rule 30 (bare_key_char -> UNDERSCORE .)
+    DASH            reduce using rule 30 (bare_key_char -> UNDERSCORE .)
+    UNDERSCORE      reduce using rule 30 (bare_key_char -> UNDERSCORE .)
+    DOT             reduce using rule 30 (bare_key_char -> UNDERSCORE .)
+    ASSIGNMENT      reduce using rule 30 (bare_key_char -> UNDERSCORE .)
+
+
+state 23
+
+    (2) expression_list -> NEWLINE expression_list .
+
+    $end            reduce using rule 2 (expression_list -> NEWLINE expression_list .)
+
+
+state 24
+
+    (3) expression_list -> expression NEWLINE . expression_list
+    (2) expression_list -> . NEWLINE expression_list
+    (3) expression_list -> . expression NEWLINE expression_list
+    (4) expression_list -> . expression
+    (5) expression -> . comment
+    (6) expression -> . key_val
+    (7) expression -> . key_val comment
+    (8) comment -> . COMMENT_START comment_string
+    (19) key_val -> . key ASSIGNMENT value
+    (20) key -> . simple_key
+    (21) key -> . dotted_key
+    (22) simple_key -> . bare_key
+    (23) simple_key -> . quoted_key
+    (33) dotted_key -> . simple_key DOT simple_key
+    (24) bare_key -> . bare_key_sequence
+    (31) quoted_key -> . basic_string
+    (32) quoted_key -> . literal_string
+    (25) bare_key_sequence -> . bare_key_char
+    (26) bare_key_sequence -> . bare_key_char bare_key_sequence
+    (36) basic_string -> . BASIC_STR_QUOTE BASIC_STR_QUOTE
+    (37) basic_string -> . BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE
+    (54) literal_string -> . LITERAL_STR_QUOTE LITERAL_STR_QUOTE
+    (55) literal_string -> . LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE
+    (27) bare_key_char -> . ASCII_CHAR
+    (28) bare_key_char -> . UNICODE_NUMBER
+    (29) bare_key_char -> . DASH
+    (30) bare_key_char -> . UNDERSCORE
+
+    NEWLINE         shift and go to state 3
+    COMMENT_START   shift and go to state 7
+    BASIC_STR_QUOTE shift and go to state 17
+    LITERAL_STR_QUOTE shift and go to state 18
+    ASCII_CHAR      shift and go to state 19
+    UNICODE_NUMBER  shift and go to state 20
+    DASH            shift and go to state 21
+    UNDERSCORE      shift and go to state 22
+
+    expression                     shift and go to state 4
+    expression_list                shift and go to state 73
+    comment                        shift and go to state 5
+    key_val                        shift and go to state 6
+    key                            shift and go to state 8
+    simple_key                     shift and go to state 9
+    dotted_key                     shift and go to state 10
+    bare_key                       shift and go to state 11
+    quoted_key                     shift and go to state 12
+    bare_key_sequence              shift and go to state 13
+    basic_string                   shift and go to state 14
+    literal_string                 shift and go to state 15
+    bare_key_char                  shift and go to state 16
+
+state 25
+
+    (7) expression -> key_val comment .
+
+    NEWLINE         reduce using rule 7 (expression -> key_val comment .)
+    $end            reduce using rule 7 (expression -> key_val comment .)
+
+
+state 26
+
+    (15) comment_char -> COMMENT_START .
+
+    ASCII_CHAR      reduce using rule 15 (comment_char -> COMMENT_START .)
+    UNICODE_CHAR    reduce using rule 15 (comment_char -> COMMENT_START .)
+    UNICODE_NUMBER  reduce using rule 15 (comment_char -> COMMENT_START .)
+    UNICODE_PUNCTUATION reduce using rule 15 (comment_char -> COMMENT_START .)
+    COMMENT_START   reduce using rule 15 (comment_char -> COMMENT_START .)
+    DASH            reduce using rule 15 (comment_char -> COMMENT_START .)
+    UNDERSCORE      reduce using rule 15 (comment_char -> COMMENT_START .)
+    WHITESPACE      reduce using rule 15 (comment_char -> COMMENT_START .)
+    NEWLINE         reduce using rule 15 (comment_char -> COMMENT_START .)
+    $end            reduce using rule 15 (comment_char -> COMMENT_START .)
+
+
+state 27
+
+    (8) comment -> COMMENT_START comment_string .
+
+    NEWLINE         reduce using rule 8 (comment -> COMMENT_START comment_string .)
+    $end            reduce using rule 8 (comment -> COMMENT_START comment_string .)
+
+
+state 28
+
+    (9) comment_string -> comment_char .
+    (10) comment_string -> comment_char . comment_string
+    (9) comment_string -> . comment_char
+    (10) comment_string -> . comment_char comment_string
+    (11) comment_char -> . ASCII_CHAR
+    (12) comment_char -> . UNICODE_CHAR
+    (13) comment_char -> . UNICODE_NUMBER
+    (14) comment_char -> . UNICODE_PUNCTUATION
+    (15) comment_char -> . COMMENT_START
+    (16) comment_char -> . DASH
+    (17) comment_char -> . UNDERSCORE
+    (18) comment_char -> . WHITESPACE
+
+    NEWLINE         reduce using rule 9 (comment_string -> comment_char .)
+    $end            reduce using rule 9 (comment_string -> comment_char .)
+    ASCII_CHAR      shift and go to state 29
+    UNICODE_CHAR    shift and go to state 30
+    UNICODE_NUMBER  shift and go to state 31
+    UNICODE_PUNCTUATION shift and go to state 32
+    COMMENT_START   shift and go to state 26
+    DASH            shift and go to state 33
+    UNDERSCORE      shift and go to state 34
+    WHITESPACE      shift and go to state 35
+
+    comment_char                   shift and go to state 28
+    comment_string                 shift and go to state 74
+
+state 29
+
+    (11) comment_char -> ASCII_CHAR .
+
+    ASCII_CHAR      reduce using rule 11 (comment_char -> ASCII_CHAR .)
+    UNICODE_CHAR    reduce using rule 11 (comment_char -> ASCII_CHAR .)
+    UNICODE_NUMBER  reduce using rule 11 (comment_char -> ASCII_CHAR .)
+    UNICODE_PUNCTUATION reduce using rule 11 (comment_char -> ASCII_CHAR .)
+    COMMENT_START   reduce using rule 11 (comment_char -> ASCII_CHAR .)
+    DASH            reduce using rule 11 (comment_char -> ASCII_CHAR .)
+    UNDERSCORE      reduce using rule 11 (comment_char -> ASCII_CHAR .)
+    WHITESPACE      reduce using rule 11 (comment_char -> ASCII_CHAR .)
+    NEWLINE         reduce using rule 11 (comment_char -> ASCII_CHAR .)
+    $end            reduce using rule 11 (comment_char -> ASCII_CHAR .)
+
+
+state 30
+
+    (12) comment_char -> UNICODE_CHAR .
+
+    ASCII_CHAR      reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+    UNICODE_CHAR    reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+    UNICODE_NUMBER  reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+    UNICODE_PUNCTUATION reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+    COMMENT_START   reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+    DASH            reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+    UNDERSCORE      reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+    WHITESPACE      reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+    NEWLINE         reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+    $end            reduce using rule 12 (comment_char -> UNICODE_CHAR .)
+
+
+state 31
+
+    (13) comment_char -> UNICODE_NUMBER .
+
+    ASCII_CHAR      reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+    UNICODE_CHAR    reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+    UNICODE_NUMBER  reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+    UNICODE_PUNCTUATION reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+    COMMENT_START   reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+    DASH            reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+    UNDERSCORE      reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+    WHITESPACE      reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+    NEWLINE         reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+    $end            reduce using rule 13 (comment_char -> UNICODE_NUMBER .)
+
+
+state 32
+
+    (14) comment_char -> UNICODE_PUNCTUATION .
+
+    ASCII_CHAR      reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+    UNICODE_CHAR    reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+    UNICODE_NUMBER  reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+    UNICODE_PUNCTUATION reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+    COMMENT_START   reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+    DASH            reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+    UNDERSCORE      reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+    WHITESPACE      reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+    NEWLINE         reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+    $end            reduce using rule 14 (comment_char -> UNICODE_PUNCTUATION .)
+
+
+state 33
+
+    (16) comment_char -> DASH .
+
+    ASCII_CHAR      reduce using rule 16 (comment_char -> DASH .)
+    UNICODE_CHAR    reduce using rule 16 (comment_char -> DASH .)
+    UNICODE_NUMBER  reduce using rule 16 (comment_char -> DASH .)
+    UNICODE_PUNCTUATION reduce using rule 16 (comment_char -> DASH .)
+    COMMENT_START   reduce using rule 16 (comment_char -> DASH .)
+    DASH            reduce using rule 16 (comment_char -> DASH .)
+    UNDERSCORE      reduce using rule 16 (comment_char -> DASH .)
+    WHITESPACE      reduce using rule 16 (comment_char -> DASH .)
+    NEWLINE         reduce using rule 16 (comment_char -> DASH .)
+    $end            reduce using rule 16 (comment_char -> DASH .)
+
+
+state 34
+
+    (17) comment_char -> UNDERSCORE .
+
+    ASCII_CHAR      reduce using rule 17 (comment_char -> UNDERSCORE .)
+    UNICODE_CHAR    reduce using rule 17 (comment_char -> UNDERSCORE .)
+    UNICODE_NUMBER  reduce using rule 17 (comment_char -> UNDERSCORE .)
+    UNICODE_PUNCTUATION reduce using rule 17 (comment_char -> UNDERSCORE .)
+    COMMENT_START   reduce using rule 17 (comment_char -> UNDERSCORE .)
+    DASH            reduce using rule 17 (comment_char -> UNDERSCORE .)
+    UNDERSCORE      reduce using rule 17 (comment_char -> UNDERSCORE .)
+    WHITESPACE      reduce using rule 17 (comment_char -> UNDERSCORE .)
+    NEWLINE         reduce using rule 17 (comment_char -> UNDERSCORE .)
+    $end            reduce using rule 17 (comment_char -> UNDERSCORE .)
+
+
+state 35
+
+    (18) comment_char -> WHITESPACE .
+
+    ASCII_CHAR      reduce using rule 18 (comment_char -> WHITESPACE .)
+    UNICODE_CHAR    reduce using rule 18 (comment_char -> WHITESPACE .)
+    UNICODE_NUMBER  reduce using rule 18 (comment_char -> WHITESPACE .)
+    UNICODE_PUNCTUATION reduce using rule 18 (comment_char -> WHITESPACE .)
+    COMMENT_START   reduce using rule 18 (comment_char -> WHITESPACE .)
+    DASH            reduce using rule 18 (comment_char -> WHITESPACE .)
+    UNDERSCORE      reduce using rule 18 (comment_char -> WHITESPACE .)
+    WHITESPACE      reduce using rule 18 (comment_char -> WHITESPACE .)
+    NEWLINE         reduce using rule 18 (comment_char -> WHITESPACE .)
+    $end            reduce using rule 18 (comment_char -> WHITESPACE .)
+
+
+state 36
+
+    (19) key_val -> key ASSIGNMENT . value
+    (34) value -> . basic_string
+    (35) value -> . literal_string
+    (36) basic_string -> . BASIC_STR_QUOTE BASIC_STR_QUOTE
+    (37) basic_string -> . BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE
+    (54) literal_string -> . LITERAL_STR_QUOTE LITERAL_STR_QUOTE
+    (55) literal_string -> . LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE
+
+    BASIC_STR_QUOTE shift and go to state 17
+    LITERAL_STR_QUOTE shift and go to state 18
+
+    value                          shift and go to state 75
+    basic_string                   shift and go to state 76
+    literal_string                 shift and go to state 77
+
+state 37
+
+    (33) dotted_key -> simple_key DOT . simple_key
+    (22) simple_key -> . bare_key
+    (23) simple_key -> . quoted_key
+    (24) bare_key -> . bare_key_sequence
+    (31) quoted_key -> . basic_string
+    (32) quoted_key -> . literal_string
+    (25) bare_key_sequence -> . bare_key_char
+    (26) bare_key_sequence -> . bare_key_char bare_key_sequence
+    (36) basic_string -> . BASIC_STR_QUOTE BASIC_STR_QUOTE
+    (37) basic_string -> . BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE
+    (54) literal_string -> . LITERAL_STR_QUOTE LITERAL_STR_QUOTE
+    (55) literal_string -> . LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE
+    (27) bare_key_char -> . ASCII_CHAR
+    (28) bare_key_char -> . UNICODE_NUMBER
+    (29) bare_key_char -> . DASH
+    (30) bare_key_char -> . UNDERSCORE
+
+    BASIC_STR_QUOTE shift and go to state 17
+    LITERAL_STR_QUOTE shift and go to state 18
+    ASCII_CHAR      shift and go to state 19
+    UNICODE_NUMBER  shift and go to state 20
+    DASH            shift and go to state 21
+    UNDERSCORE      shift and go to state 22
+
+    simple_key                     shift and go to state 78
+    bare_key                       shift and go to state 11
+    quoted_key                     shift and go to state 12
+    bare_key_sequence              shift and go to state 13
+    basic_string                   shift and go to state 14
+    literal_string                 shift and go to state 15
+    bare_key_char                  shift and go to state 16
+
+state 38
+
+    (26) bare_key_sequence -> bare_key_char bare_key_sequence .
+
+    DOT             reduce using rule 26 (bare_key_sequence -> bare_key_char bare_key_sequence .)
+    ASSIGNMENT      reduce using rule 26 (bare_key_sequence -> bare_key_char bare_key_sequence .)
+
+
+state 39
+
+    (36) basic_string -> BASIC_STR_QUOTE BASIC_STR_QUOTE .
+
+    DOT             reduce using rule 36 (basic_string -> BASIC_STR_QUOTE BASIC_STR_QUOTE .)
+    ASSIGNMENT      reduce using rule 36 (basic_string -> BASIC_STR_QUOTE BASIC_STR_QUOTE .)
+    COMMENT_START   reduce using rule 36 (basic_string -> BASIC_STR_QUOTE BASIC_STR_QUOTE .)
+    NEWLINE         reduce using rule 36 (basic_string -> BASIC_STR_QUOTE BASIC_STR_QUOTE .)
+    $end            reduce using rule 36 (basic_string -> BASIC_STR_QUOTE BASIC_STR_QUOTE .)
+
+
+state 40
+
+    (37) basic_string -> BASIC_STR_QUOTE basic_string_sequence . BASIC_STR_QUOTE
+
+    BASIC_STR_QUOTE shift and go to state 79
+
+
+state 41
+
+    (38) basic_string_sequence -> basic_string_char .
+    (39) basic_string_sequence -> basic_string_char . basic_string_sequence
+    (38) basic_string_sequence -> . basic_string_char
+    (39) basic_string_sequence -> . basic_string_char basic_string_sequence
+    (40) basic_string_char -> . ASCII_CHAR
+    (41) basic_string_char -> . UNICODE_CHAR
+    (42) basic_string_char -> . UNICODE_NUMBER
+    (43) basic_string_char -> . UNICODE_PUNCTUATION
+    (44) basic_string_char -> . UNICODE_CONTROL
+    (45) basic_string_char -> . UNICODE_SYMBOL
+    (46) basic_string_char -> . UNICODE_SEPARATOR
+    (47) basic_string_char -> . UNICODE_PRIVATE_USE
+    (48) basic_string_char -> . LITERAL_STR_QUOTE
+    (49) basic_string_char -> . DASH
+    (50) basic_string_char -> . UNDERSCORE
+    (51) basic_string_char -> . WHITESPACE
+    (52) basic_string_char -> . DOT
+    (53) basic_string_char -> . COMMENT_START
+
+    BASIC_STR_QUOTE reduce using rule 38 (basic_string_sequence -> basic_string_char .)
+    ASCII_CHAR      shift and go to state 42
+    UNICODE_CHAR    shift and go to state 43
+    UNICODE_NUMBER  shift and go to state 44
+    UNICODE_PUNCTUATION shift and go to state 45
+    UNICODE_CONTROL shift and go to state 46
+    UNICODE_SYMBOL  shift and go to state 47
+    UNICODE_SEPARATOR shift and go to state 48
+    UNICODE_PRIVATE_USE shift and go to state 49
+    LITERAL_STR_QUOTE shift and go to state 50
+    DASH            shift and go to state 51
+    UNDERSCORE      shift and go to state 52
+    WHITESPACE      shift and go to state 53
+    DOT             shift and go to state 54
+    COMMENT_START   shift and go to state 55
+
+    basic_string_char              shift and go to state 41
+    basic_string_sequence          shift and go to state 80
+
+state 42
+
+    (40) basic_string_char -> ASCII_CHAR .
+
+    ASCII_CHAR      reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    UNICODE_CHAR    reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    UNICODE_NUMBER  reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    UNICODE_PUNCTUATION reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    UNICODE_CONTROL reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    UNICODE_SYMBOL  reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    UNICODE_SEPARATOR reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    UNICODE_PRIVATE_USE reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    LITERAL_STR_QUOTE reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    DASH            reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    UNDERSCORE      reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    WHITESPACE      reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    DOT             reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    COMMENT_START   reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+    BASIC_STR_QUOTE reduce using rule 40 (basic_string_char -> ASCII_CHAR .)
+
+
+state 43
+
+    (41) basic_string_char -> UNICODE_CHAR .
+
+    ASCII_CHAR      reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    UNICODE_CHAR    reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    UNICODE_NUMBER  reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    UNICODE_PUNCTUATION reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    UNICODE_CONTROL reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    UNICODE_SYMBOL  reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    UNICODE_SEPARATOR reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    UNICODE_PRIVATE_USE reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    LITERAL_STR_QUOTE reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    DASH            reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    UNDERSCORE      reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    WHITESPACE      reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    DOT             reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    COMMENT_START   reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+    BASIC_STR_QUOTE reduce using rule 41 (basic_string_char -> UNICODE_CHAR .)
+
+
+state 44
+
+    (42) basic_string_char -> UNICODE_NUMBER .
+
+    ASCII_CHAR      reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    UNICODE_CHAR    reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    UNICODE_NUMBER  reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    UNICODE_PUNCTUATION reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    UNICODE_CONTROL reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    UNICODE_SYMBOL  reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    UNICODE_SEPARATOR reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    UNICODE_PRIVATE_USE reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    LITERAL_STR_QUOTE reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    DASH            reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    UNDERSCORE      reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    WHITESPACE      reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    DOT             reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    COMMENT_START   reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+    BASIC_STR_QUOTE reduce using rule 42 (basic_string_char -> UNICODE_NUMBER .)
+
+
+state 45
+
+    (43) basic_string_char -> UNICODE_PUNCTUATION .
+
+    ASCII_CHAR      reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_CHAR    reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_NUMBER  reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_PUNCTUATION reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_CONTROL reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_SYMBOL  reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_SEPARATOR reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_PRIVATE_USE reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    LITERAL_STR_QUOTE reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    DASH            reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    UNDERSCORE      reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    WHITESPACE      reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    DOT             reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    COMMENT_START   reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+    BASIC_STR_QUOTE reduce using rule 43 (basic_string_char -> UNICODE_PUNCTUATION .)
+
+
+state 46
+
+    (44) basic_string_char -> UNICODE_CONTROL .
+
+    ASCII_CHAR      reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    UNICODE_CHAR    reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    UNICODE_NUMBER  reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    UNICODE_PUNCTUATION reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    UNICODE_CONTROL reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    UNICODE_SYMBOL  reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    UNICODE_SEPARATOR reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    UNICODE_PRIVATE_USE reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    LITERAL_STR_QUOTE reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    DASH            reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    UNDERSCORE      reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    WHITESPACE      reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    DOT             reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    COMMENT_START   reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+    BASIC_STR_QUOTE reduce using rule 44 (basic_string_char -> UNICODE_CONTROL .)
+
+
+state 47
+
+    (45) basic_string_char -> UNICODE_SYMBOL .
+
+    ASCII_CHAR      reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    UNICODE_CHAR    reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    UNICODE_NUMBER  reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    UNICODE_PUNCTUATION reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    UNICODE_CONTROL reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    UNICODE_SYMBOL  reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    UNICODE_SEPARATOR reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    UNICODE_PRIVATE_USE reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    LITERAL_STR_QUOTE reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    DASH            reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    UNDERSCORE      reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    WHITESPACE      reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    DOT             reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    COMMENT_START   reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+    BASIC_STR_QUOTE reduce using rule 45 (basic_string_char -> UNICODE_SYMBOL .)
+
+
+state 48
+
+    (46) basic_string_char -> UNICODE_SEPARATOR .
+
+    ASCII_CHAR      reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_CHAR    reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_NUMBER  reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_PUNCTUATION reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_CONTROL reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_SYMBOL  reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_SEPARATOR reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_PRIVATE_USE reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    LITERAL_STR_QUOTE reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    DASH            reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    UNDERSCORE      reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    WHITESPACE      reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    DOT             reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    COMMENT_START   reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+    BASIC_STR_QUOTE reduce using rule 46 (basic_string_char -> UNICODE_SEPARATOR .)
+
+
+state 49
+
+    (47) basic_string_char -> UNICODE_PRIVATE_USE .
+
+    ASCII_CHAR      reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_CHAR    reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_NUMBER  reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_PUNCTUATION reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_CONTROL reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_SYMBOL  reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_SEPARATOR reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_PRIVATE_USE reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    LITERAL_STR_QUOTE reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    DASH            reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    UNDERSCORE      reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    WHITESPACE      reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    DOT             reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    COMMENT_START   reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+    BASIC_STR_QUOTE reduce using rule 47 (basic_string_char -> UNICODE_PRIVATE_USE .)
+
+
+state 50
+
+    (48) basic_string_char -> LITERAL_STR_QUOTE .
+
+    ASCII_CHAR      reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    UNICODE_CHAR    reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    UNICODE_NUMBER  reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    UNICODE_PUNCTUATION reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    UNICODE_CONTROL reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    UNICODE_SYMBOL  reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    UNICODE_SEPARATOR reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    UNICODE_PRIVATE_USE reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    LITERAL_STR_QUOTE reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    DASH            reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    UNDERSCORE      reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    WHITESPACE      reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    DOT             reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    COMMENT_START   reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+    BASIC_STR_QUOTE reduce using rule 48 (basic_string_char -> LITERAL_STR_QUOTE .)
+
+
+state 51
+
+    (49) basic_string_char -> DASH .
+
+    ASCII_CHAR      reduce using rule 49 (basic_string_char -> DASH .)
+    UNICODE_CHAR    reduce using rule 49 (basic_string_char -> DASH .)
+    UNICODE_NUMBER  reduce using rule 49 (basic_string_char -> DASH .)
+    UNICODE_PUNCTUATION reduce using rule 49 (basic_string_char -> DASH .)
+    UNICODE_CONTROL reduce using rule 49 (basic_string_char -> DASH .)
+    UNICODE_SYMBOL  reduce using rule 49 (basic_string_char -> DASH .)
+    UNICODE_SEPARATOR reduce using rule 49 (basic_string_char -> DASH .)
+    UNICODE_PRIVATE_USE reduce using rule 49 (basic_string_char -> DASH .)
+    LITERAL_STR_QUOTE reduce using rule 49 (basic_string_char -> DASH .)
+    DASH            reduce using rule 49 (basic_string_char -> DASH .)
+    UNDERSCORE      reduce using rule 49 (basic_string_char -> DASH .)
+    WHITESPACE      reduce using rule 49 (basic_string_char -> DASH .)
+    DOT             reduce using rule 49 (basic_string_char -> DASH .)
+    COMMENT_START   reduce using rule 49 (basic_string_char -> DASH .)
+    BASIC_STR_QUOTE reduce using rule 49 (basic_string_char -> DASH .)
+
+
+state 52
+
+    (50) basic_string_char -> UNDERSCORE .
+
+    ASCII_CHAR      reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    UNICODE_CHAR    reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    UNICODE_NUMBER  reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    UNICODE_PUNCTUATION reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    UNICODE_CONTROL reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    UNICODE_SYMBOL  reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    UNICODE_SEPARATOR reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    UNICODE_PRIVATE_USE reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    LITERAL_STR_QUOTE reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    DASH            reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    UNDERSCORE      reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    WHITESPACE      reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    DOT             reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    COMMENT_START   reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+    BASIC_STR_QUOTE reduce using rule 50 (basic_string_char -> UNDERSCORE .)
+
+
+state 53
+
+    (51) basic_string_char -> WHITESPACE .
+
+    ASCII_CHAR      reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    UNICODE_CHAR    reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    UNICODE_NUMBER  reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    UNICODE_PUNCTUATION reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    UNICODE_CONTROL reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    UNICODE_SYMBOL  reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    UNICODE_SEPARATOR reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    UNICODE_PRIVATE_USE reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    LITERAL_STR_QUOTE reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    DASH            reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    UNDERSCORE      reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    WHITESPACE      reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    DOT             reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    COMMENT_START   reduce using rule 51 (basic_string_char -> WHITESPACE .)
+    BASIC_STR_QUOTE reduce using rule 51 (basic_string_char -> WHITESPACE .)
+
+
+state 54
+
+    (52) basic_string_char -> DOT .
+
+    ASCII_CHAR      reduce using rule 52 (basic_string_char -> DOT .)
+    UNICODE_CHAR    reduce using rule 52 (basic_string_char -> DOT .)
+    UNICODE_NUMBER  reduce using rule 52 (basic_string_char -> DOT .)
+    UNICODE_PUNCTUATION reduce using rule 52 (basic_string_char -> DOT .)
+    UNICODE_CONTROL reduce using rule 52 (basic_string_char -> DOT .)
+    UNICODE_SYMBOL  reduce using rule 52 (basic_string_char -> DOT .)
+    UNICODE_SEPARATOR reduce using rule 52 (basic_string_char -> DOT .)
+    UNICODE_PRIVATE_USE reduce using rule 52 (basic_string_char -> DOT .)
+    LITERAL_STR_QUOTE reduce using rule 52 (basic_string_char -> DOT .)
+    DASH            reduce using rule 52 (basic_string_char -> DOT .)
+    UNDERSCORE      reduce using rule 52 (basic_string_char -> DOT .)
+    WHITESPACE      reduce using rule 52 (basic_string_char -> DOT .)
+    DOT             reduce using rule 52 (basic_string_char -> DOT .)
+    COMMENT_START   reduce using rule 52 (basic_string_char -> DOT .)
+    BASIC_STR_QUOTE reduce using rule 52 (basic_string_char -> DOT .)
+
+
+state 55
+
+    (53) basic_string_char -> COMMENT_START .
+
+    ASCII_CHAR      reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    UNICODE_CHAR    reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    UNICODE_NUMBER  reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    UNICODE_PUNCTUATION reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    UNICODE_CONTROL reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    UNICODE_SYMBOL  reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    UNICODE_SEPARATOR reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    UNICODE_PRIVATE_USE reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    LITERAL_STR_QUOTE reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    DASH            reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    UNDERSCORE      reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    WHITESPACE      reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    DOT             reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    COMMENT_START   reduce using rule 53 (basic_string_char -> COMMENT_START .)
+    BASIC_STR_QUOTE reduce using rule 53 (basic_string_char -> COMMENT_START .)
+
+
+state 56
+
+    (54) literal_string -> LITERAL_STR_QUOTE LITERAL_STR_QUOTE .
+
+    DOT             reduce using rule 54 (literal_string -> LITERAL_STR_QUOTE LITERAL_STR_QUOTE .)
+    ASSIGNMENT      reduce using rule 54 (literal_string -> LITERAL_STR_QUOTE LITERAL_STR_QUOTE .)
+    COMMENT_START   reduce using rule 54 (literal_string -> LITERAL_STR_QUOTE LITERAL_STR_QUOTE .)
+    NEWLINE         reduce using rule 54 (literal_string -> LITERAL_STR_QUOTE LITERAL_STR_QUOTE .)
+    $end            reduce using rule 54 (literal_string -> LITERAL_STR_QUOTE LITERAL_STR_QUOTE .)
+
+
+state 57
+
+    (55) literal_string -> LITERAL_STR_QUOTE literal_string_sequence . LITERAL_STR_QUOTE
+
+    LITERAL_STR_QUOTE shift and go to state 81
+
+
+state 58
+
+    (56) literal_string_sequence -> literal_string_char .
+    (57) literal_string_sequence -> literal_string_char . literal_string_sequence
+    (56) literal_string_sequence -> . literal_string_char
+    (57) literal_string_sequence -> . literal_string_char literal_string_sequence
+    (58) literal_string_char -> . ASCII_CHAR
+    (59) literal_string_char -> . UNICODE_CHAR
+    (60) literal_string_char -> . UNICODE_NUMBER
+    (61) literal_string_char -> . UNICODE_PUNCTUATION
+    (62) literal_string_char -> . UNICODE_CONTROL
+    (63) literal_string_char -> . UNICODE_SYMBOL
+    (64) literal_string_char -> . UNICODE_SEPARATOR
+    (65) literal_string_char -> . UNICODE_PRIVATE_USE
+    (66) literal_string_char -> . BASIC_STR_QUOTE
+    (67) literal_string_char -> . DASH
+    (68) literal_string_char -> . UNDERSCORE
+    (69) literal_string_char -> . WHITESPACE
+    (70) literal_string_char -> . DOT
+    (71) literal_string_char -> . COMMENT_START
+
+    LITERAL_STR_QUOTE reduce using rule 56 (literal_string_sequence -> literal_string_char .)
+    ASCII_CHAR      shift and go to state 59
+    UNICODE_CHAR    shift and go to state 60
+    UNICODE_NUMBER  shift and go to state 61
+    UNICODE_PUNCTUATION shift and go to state 62
+    UNICODE_CONTROL shift and go to state 63
+    UNICODE_SYMBOL  shift and go to state 64
+    UNICODE_SEPARATOR shift and go to state 65
+    UNICODE_PRIVATE_USE shift and go to state 66
+    BASIC_STR_QUOTE shift and go to state 67
+    DASH            shift and go to state 68
+    UNDERSCORE      shift and go to state 69
+    WHITESPACE      shift and go to state 70
+    DOT             shift and go to state 71
+    COMMENT_START   shift and go to state 72
+
+    literal_string_char            shift and go to state 58
+    literal_string_sequence        shift and go to state 82
+
+state 59
+
+    (58) literal_string_char -> ASCII_CHAR .
+
+    ASCII_CHAR      reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    UNICODE_CHAR    reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    UNICODE_NUMBER  reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    UNICODE_PUNCTUATION reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    UNICODE_CONTROL reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    UNICODE_SYMBOL  reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    UNICODE_SEPARATOR reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    UNICODE_PRIVATE_USE reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    BASIC_STR_QUOTE reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    DASH            reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    UNDERSCORE      reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    WHITESPACE      reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    DOT             reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    COMMENT_START   reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+    LITERAL_STR_QUOTE reduce using rule 58 (literal_string_char -> ASCII_CHAR .)
+
+
+state 60
+
+    (59) literal_string_char -> UNICODE_CHAR .
+
+    ASCII_CHAR      reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    UNICODE_CHAR    reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    UNICODE_NUMBER  reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    UNICODE_PUNCTUATION reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    UNICODE_CONTROL reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    UNICODE_SYMBOL  reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    UNICODE_SEPARATOR reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    UNICODE_PRIVATE_USE reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    BASIC_STR_QUOTE reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    DASH            reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    UNDERSCORE      reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    WHITESPACE      reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    DOT             reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    COMMENT_START   reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+    LITERAL_STR_QUOTE reduce using rule 59 (literal_string_char -> UNICODE_CHAR .)
+
+
+state 61
+
+    (60) literal_string_char -> UNICODE_NUMBER .
+
+    ASCII_CHAR      reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    UNICODE_CHAR    reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    UNICODE_NUMBER  reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    UNICODE_PUNCTUATION reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    UNICODE_CONTROL reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    UNICODE_SYMBOL  reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    UNICODE_SEPARATOR reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    UNICODE_PRIVATE_USE reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    BASIC_STR_QUOTE reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    DASH            reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    UNDERSCORE      reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    WHITESPACE      reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    DOT             reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    COMMENT_START   reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+    LITERAL_STR_QUOTE reduce using rule 60 (literal_string_char -> UNICODE_NUMBER .)
+
+
+state 62
+
+    (61) literal_string_char -> UNICODE_PUNCTUATION .
+
+    ASCII_CHAR      reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_CHAR    reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_NUMBER  reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_PUNCTUATION reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_CONTROL reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_SYMBOL  reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_SEPARATOR reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    UNICODE_PRIVATE_USE reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    BASIC_STR_QUOTE reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    DASH            reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    UNDERSCORE      reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    WHITESPACE      reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    DOT             reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    COMMENT_START   reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+    LITERAL_STR_QUOTE reduce using rule 61 (literal_string_char -> UNICODE_PUNCTUATION .)
+
+
+state 63
+
+    (62) literal_string_char -> UNICODE_CONTROL .
+
+    ASCII_CHAR      reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    UNICODE_CHAR    reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    UNICODE_NUMBER  reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    UNICODE_PUNCTUATION reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    UNICODE_CONTROL reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    UNICODE_SYMBOL  reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    UNICODE_SEPARATOR reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    UNICODE_PRIVATE_USE reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    BASIC_STR_QUOTE reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    DASH            reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    UNDERSCORE      reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    WHITESPACE      reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    DOT             reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    COMMENT_START   reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+    LITERAL_STR_QUOTE reduce using rule 62 (literal_string_char -> UNICODE_CONTROL .)
+
+
+state 64
+
+    (63) literal_string_char -> UNICODE_SYMBOL .
+
+    ASCII_CHAR      reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    UNICODE_CHAR    reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    UNICODE_NUMBER  reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    UNICODE_PUNCTUATION reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    UNICODE_CONTROL reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    UNICODE_SYMBOL  reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    UNICODE_SEPARATOR reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    UNICODE_PRIVATE_USE reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    BASIC_STR_QUOTE reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    DASH            reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    UNDERSCORE      reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    WHITESPACE      reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    DOT             reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    COMMENT_START   reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+    LITERAL_STR_QUOTE reduce using rule 63 (literal_string_char -> UNICODE_SYMBOL .)
+
+
+state 65
+
+    (64) literal_string_char -> UNICODE_SEPARATOR .
+
+    ASCII_CHAR      reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_CHAR    reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_NUMBER  reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_PUNCTUATION reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_CONTROL reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_SYMBOL  reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_SEPARATOR reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    UNICODE_PRIVATE_USE reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    BASIC_STR_QUOTE reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    DASH            reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    UNDERSCORE      reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    WHITESPACE      reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    DOT             reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    COMMENT_START   reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+    LITERAL_STR_QUOTE reduce using rule 64 (literal_string_char -> UNICODE_SEPARATOR .)
+
+
+state 66
+
+    (65) literal_string_char -> UNICODE_PRIVATE_USE .
+
+    ASCII_CHAR      reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_CHAR    reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_NUMBER  reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_PUNCTUATION reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_CONTROL reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_SYMBOL  reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_SEPARATOR reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    UNICODE_PRIVATE_USE reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    BASIC_STR_QUOTE reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    DASH            reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    UNDERSCORE      reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    WHITESPACE      reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    DOT             reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    COMMENT_START   reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+    LITERAL_STR_QUOTE reduce using rule 65 (literal_string_char -> UNICODE_PRIVATE_USE .)
+
+
+state 67
+
+    (66) literal_string_char -> BASIC_STR_QUOTE .
+
+    ASCII_CHAR      reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    UNICODE_CHAR    reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    UNICODE_NUMBER  reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    UNICODE_PUNCTUATION reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    UNICODE_CONTROL reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    UNICODE_SYMBOL  reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    UNICODE_SEPARATOR reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    UNICODE_PRIVATE_USE reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    BASIC_STR_QUOTE reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    DASH            reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    UNDERSCORE      reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    WHITESPACE      reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    DOT             reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    COMMENT_START   reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+    LITERAL_STR_QUOTE reduce using rule 66 (literal_string_char -> BASIC_STR_QUOTE .)
+
+
+state 68
+
+    (67) literal_string_char -> DASH .
+
+    ASCII_CHAR      reduce using rule 67 (literal_string_char -> DASH .)
+    UNICODE_CHAR    reduce using rule 67 (literal_string_char -> DASH .)
+    UNICODE_NUMBER  reduce using rule 67 (literal_string_char -> DASH .)
+    UNICODE_PUNCTUATION reduce using rule 67 (literal_string_char -> DASH .)
+    UNICODE_CONTROL reduce using rule 67 (literal_string_char -> DASH .)
+    UNICODE_SYMBOL  reduce using rule 67 (literal_string_char -> DASH .)
+    UNICODE_SEPARATOR reduce using rule 67 (literal_string_char -> DASH .)
+    UNICODE_PRIVATE_USE reduce using rule 67 (literal_string_char -> DASH .)
+    BASIC_STR_QUOTE reduce using rule 67 (literal_string_char -> DASH .)
+    DASH            reduce using rule 67 (literal_string_char -> DASH .)
+    UNDERSCORE      reduce using rule 67 (literal_string_char -> DASH .)
+    WHITESPACE      reduce using rule 67 (literal_string_char -> DASH .)
+    DOT             reduce using rule 67 (literal_string_char -> DASH .)
+    COMMENT_START   reduce using rule 67 (literal_string_char -> DASH .)
+    LITERAL_STR_QUOTE reduce using rule 67 (literal_string_char -> DASH .)
+
+
+state 69
+
+    (68) literal_string_char -> UNDERSCORE .
+
+    ASCII_CHAR      reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    UNICODE_CHAR    reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    UNICODE_NUMBER  reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    UNICODE_PUNCTUATION reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    UNICODE_CONTROL reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    UNICODE_SYMBOL  reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    UNICODE_SEPARATOR reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    UNICODE_PRIVATE_USE reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    BASIC_STR_QUOTE reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    DASH            reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    UNDERSCORE      reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    WHITESPACE      reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    DOT             reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    COMMENT_START   reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+    LITERAL_STR_QUOTE reduce using rule 68 (literal_string_char -> UNDERSCORE .)
+
+
+state 70
+
+    (69) literal_string_char -> WHITESPACE .
+
+    ASCII_CHAR      reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    UNICODE_CHAR    reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    UNICODE_NUMBER  reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    UNICODE_PUNCTUATION reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    UNICODE_CONTROL reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    UNICODE_SYMBOL  reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    UNICODE_SEPARATOR reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    UNICODE_PRIVATE_USE reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    BASIC_STR_QUOTE reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    DASH            reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    UNDERSCORE      reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    WHITESPACE      reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    DOT             reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    COMMENT_START   reduce using rule 69 (literal_string_char -> WHITESPACE .)
+    LITERAL_STR_QUOTE reduce using rule 69 (literal_string_char -> WHITESPACE .)
+
+
+state 71
+
+    (70) literal_string_char -> DOT .
+
+    ASCII_CHAR      reduce using rule 70 (literal_string_char -> DOT .)
+    UNICODE_CHAR    reduce using rule 70 (literal_string_char -> DOT .)
+    UNICODE_NUMBER  reduce using rule 70 (literal_string_char -> DOT .)
+    UNICODE_PUNCTUATION reduce using rule 70 (literal_string_char -> DOT .)
+    UNICODE_CONTROL reduce using rule 70 (literal_string_char -> DOT .)
+    UNICODE_SYMBOL  reduce using rule 70 (literal_string_char -> DOT .)
+    UNICODE_SEPARATOR reduce using rule 70 (literal_string_char -> DOT .)
+    UNICODE_PRIVATE_USE reduce using rule 70 (literal_string_char -> DOT .)
+    BASIC_STR_QUOTE reduce using rule 70 (literal_string_char -> DOT .)
+    DASH            reduce using rule 70 (literal_string_char -> DOT .)
+    UNDERSCORE      reduce using rule 70 (literal_string_char -> DOT .)
+    WHITESPACE      reduce using rule 70 (literal_string_char -> DOT .)
+    DOT             reduce using rule 70 (literal_string_char -> DOT .)
+    COMMENT_START   reduce using rule 70 (literal_string_char -> DOT .)
+    LITERAL_STR_QUOTE reduce using rule 70 (literal_string_char -> DOT .)
+
+
+state 72
+
+    (71) literal_string_char -> COMMENT_START .
+
+    ASCII_CHAR      reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    UNICODE_CHAR    reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    UNICODE_NUMBER  reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    UNICODE_PUNCTUATION reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    UNICODE_CONTROL reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    UNICODE_SYMBOL  reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    UNICODE_SEPARATOR reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    UNICODE_PRIVATE_USE reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    BASIC_STR_QUOTE reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    DASH            reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    UNDERSCORE      reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    WHITESPACE      reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    DOT             reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    COMMENT_START   reduce using rule 71 (literal_string_char -> COMMENT_START .)
+    LITERAL_STR_QUOTE reduce using rule 71 (literal_string_char -> COMMENT_START .)
+
+
+state 73
+
+    (3) expression_list -> expression NEWLINE expression_list .
+
+    $end            reduce using rule 3 (expression_list -> expression NEWLINE expression_list .)
+
+
+state 74
+
+    (10) comment_string -> comment_char comment_string .
+
+    NEWLINE         reduce using rule 10 (comment_string -> comment_char comment_string .)
+    $end            reduce using rule 10 (comment_string -> comment_char comment_string .)
+
+
+state 75
+
+    (19) key_val -> key ASSIGNMENT value .
+
+    COMMENT_START   reduce using rule 19 (key_val -> key ASSIGNMENT value .)
+    NEWLINE         reduce using rule 19 (key_val -> key ASSIGNMENT value .)
+    $end            reduce using rule 19 (key_val -> key ASSIGNMENT value .)
+
+
+state 76
+
+    (34) value -> basic_string .
+
+    COMMENT_START   reduce using rule 34 (value -> basic_string .)
+    NEWLINE         reduce using rule 34 (value -> basic_string .)
+    $end            reduce using rule 34 (value -> basic_string .)
+
+
+state 77
+
+    (35) value -> literal_string .
+
+    COMMENT_START   reduce using rule 35 (value -> literal_string .)
+    NEWLINE         reduce using rule 35 (value -> literal_string .)
+    $end            reduce using rule 35 (value -> literal_string .)
+
+
+state 78
+
+    (33) dotted_key -> simple_key DOT simple_key .
+
+    ASSIGNMENT      reduce using rule 33 (dotted_key -> simple_key DOT simple_key .)
+
+
+state 79
+
+    (37) basic_string -> BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE .
+
+    DOT             reduce using rule 37 (basic_string -> BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE .)
+    ASSIGNMENT      reduce using rule 37 (basic_string -> BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE .)
+    COMMENT_START   reduce using rule 37 (basic_string -> BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE .)
+    NEWLINE         reduce using rule 37 (basic_string -> BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE .)
+    $end            reduce using rule 37 (basic_string -> BASIC_STR_QUOTE basic_string_sequence BASIC_STR_QUOTE .)
+
+
+state 80
+
+    (39) basic_string_sequence -> basic_string_char basic_string_sequence .
+
+    BASIC_STR_QUOTE reduce using rule 39 (basic_string_sequence -> basic_string_char basic_string_sequence .)
+
+
+state 81
+
+    (55) literal_string -> LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE .
+
+    DOT             reduce using rule 55 (literal_string -> LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE .)
+    ASSIGNMENT      reduce using rule 55 (literal_string -> LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE .)
+    COMMENT_START   reduce using rule 55 (literal_string -> LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE .)
+    NEWLINE         reduce using rule 55 (literal_string -> LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE .)
+    $end            reduce using rule 55 (literal_string -> LITERAL_STR_QUOTE literal_string_sequence LITERAL_STR_QUOTE .)
+
+
+state 82
+
+    (57) literal_string_sequence -> literal_string_char literal_string_sequence .
+
+    LITERAL_STR_QUOTE reduce using rule 57 (literal_string_sequence -> literal_string_char literal_string_sequence .)
+
