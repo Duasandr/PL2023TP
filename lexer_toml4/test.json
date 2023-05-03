@@ -1,0 +1,8 @@
+{
+  "test": [
+    "test/**/*.js",
+    "!test/**/fixtures/**/*"
+  ],
+  "rec": 2,
+  "slow": 75
+}
