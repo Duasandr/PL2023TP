@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'BOOLEAN COMMA COMMENT DATE DATETIME DOT EQUAL FLOAT IDENTIFIER INTEGER LEFT_BRACE LEFT_BRACKET NEWLINE RIGHT_BRACE RIGHT_BRACKET STRING TIME WHITESPACEtoml : expression NEWLINE expressionexpression : COMMENTexpression : keyval NEWLINEkeyval : IDENTIFIER WHITESPACE EQUAL WHITESPACE value NEWLINEkeyval : IDENTIFIER DOT IDENTIFIER EQUAL valuevalue : STRINGvalue : INTEGERvalue : FLOATvalue : BOOLEANvalue : DATETIMEvalue : DATEvalue : TIME'
+_lr_signature = 'BIN_INTEGER BOOLEAN COMMA COMMENT DOT EQUALS FLOAT HEX_INTEGER IDENTIFIER INTEGER LBRACE LBRACKET LITERAL_MULTILINE_STRING LITERAL_STRING LOCAL_DATE LOCAL_DATE_TIME LOCAL_TIME MULTILINE_STRING NEWLINE OCT_INTEGER OFFSET_DATE_TIME RBRACE RBRACKET STRINGtoml : expression_listexpression_list : expressionexpression_list : expression expression_listexpression : key_val\n                    | table\n                    | inline_table\n                    | table_arraykey_val : key EQUALS valuekey : simple_keykey : dotted_keysimple_key : quoted_keysimple_key : bare_keyquoted_key : STRING\n                        | LITERAL_STRINGbare_key : IDENTIFIERbare_key : INTEGERdotted_key : simple_key DOT keydotted_key : FLOATvalue : STRING\n                | LITERAL_STRINGvalue : MULTILINE_STRING\n                | LITERAL_MULTILINE_STRINGvalue : BOOLEANvalue : OFFSET_DATE_TIME\n                | LOCAL_DATE_TIME\n                | LOCAL_DATE\n                | LOCAL_TIMEvalue : INTEGER\n                | HEX_INTEGER\n                | OCT_INTEGER\n                | BIN_INTEGERvalue : arrayvalue : FLOATvalue : inline_tablearray : LBRACKET value_list RBRACKETvalue_list : valuevalue_list : value COMMA value_listtable : LBRACKET key RBRACKETinline_list : expressioninline_list : expression COMMA inline_listinline_table : LBRACE inline_list RBRACEtable_array : LBRACKET LBRACKET key RBRACKET RBRACKET'
     
-_lr_action_items = {'COMMENT':([0,6,],[3,3,]),'IDENTIFIER':([0,6,9,],[5,5,12,]),'$end':([1,3,7,10,],[0,-2,-3,-1,]),'NEWLINE':([2,3,4,7,15,16,17,18,19,20,21,22,23,24,],[6,-2,7,-3,24,-6,-7,-8,-9,-10,-11,-12,-5,-4,]),'WHITESPACE':([5,11,],[8,13,]),'DOT':([5,],[9,]),'EQUAL':([8,12,],[11,14,]),'STRING':([13,14,],[16,16,]),'INTEGER':([13,14,],[17,17,]),'FLOAT':([13,14,],[18,18,]),'BOOLEAN':([13,14,],[19,19,]),'DATETIME':([13,14,],[20,20,]),'DATE':([13,14,],[21,21,]),'TIME':([13,14,],[22,22,]),}
+_lr_action_items = {'LBRACKET':([0,3,4,5,6,7,9,10,21,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,46,47,48,54,55,56,],[9,9,-4,-5,-6,-7,22,9,44,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,44,-38,-41,9,-35,44,-42,]),'LBRACE':([0,3,4,5,6,7,10,21,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,46,47,48,54,55,56,],[10,10,-4,-5,-6,-7,10,10,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,10,-38,-41,10,-35,10,-42,]),'FLOAT':([0,3,4,5,6,7,9,10,21,22,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,46,47,48,54,55,56,],[15,15,-4,-5,-6,-7,15,15,42,15,15,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,42,-38,-41,15,-35,42,-42,]),'STRING':([0,3,4,5,6,7,9,10,21,22,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,46,47,48,54,55,56,],[16,16,-4,-5,-6,-7,16,16,28,16,16,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,28,-38,-41,16,-35,28,-42,]),'LITERAL_STRING':([0,3,4,5,6,7,9,10,21,22,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,46,47,48,54,55,56,],[17,17,-4,-5,-6,-7,17,17,29,17,17,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,29,-38,-41,17,-35,29,-42,]),'IDENTIFIER':([0,3,4,5,6,7,9,10,22,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,48,54,56,],[18,18,-4,-5,-6,-7,18,18,18,18,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,-38,-41,18,-35,-42,]),'INTEGER':([0,3,4,5,6,7,9,10,21,22,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,46,47,48,54,55,56,],[19,19,-4,-5,-6,-7,19,19,37,19,19,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,37,-38,-41,19,-35,37,-42,]),'$end':([1,2,3,4,5,6,7,20,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,54,56,],[0,-1,-2,-4,-5,-6,-7,-3,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,-38,-41,-35,-42,]),'COMMA':([4,5,6,7,25,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,51,54,56,],[-4,-5,-6,-7,48,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,-38,-41,55,-35,-42,]),'RBRACE':([4,5,6,7,24,25,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,53,54,56,],[-4,-5,-6,-7,47,-39,-8,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,-38,-41,-40,-35,-42,]),'EQUALS':([8,11,12,13,14,15,16,17,18,19,49,],[21,-9,-10,-11,-12,-18,-13,-14,-15,-16,-17,]),'RBRACKET':([11,12,13,14,15,16,17,18,19,23,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,45,47,49,50,51,52,54,57,],[-9,-10,-11,-12,-18,-13,-14,-15,-16,46,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,52,-41,-17,54,-36,56,-35,-37,]),'DOT':([11,13,14,16,17,18,19,],[26,-11,-12,-13,-14,-15,-16,]),'MULTILINE_STRING':([21,44,55,],[30,30,30,]),'LITERAL_MULTILINE_STRING':([21,44,55,],[31,31,31,]),'BOOLEAN':([21,44,55,],[32,32,32,]),'OFFSET_DATE_TIME':([21,44,55,],[33,33,33,]),'LOCAL_DATE_TIME':([21,44,55,],[34,34,34,]),'LOCAL_DATE':([21,44,55,],[35,35,35,]),'LOCAL_TIME':([21,44,55,],[36,36,36,]),'HEX_INTEGER':([21,44,55,],[38,38,38,]),'OCT_INTEGER':([21,44,55,],[39,39,39,]),'BIN_INTEGER':([21,44,55,],[40,40,40,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'toml':([0,],[1,]),'expression':([0,6,],[2,10,]),'keyval':([0,6,],[4,4,]),'value':([13,14,],[15,23,]),}
+_lr_goto_items = {'toml':([0,],[1,]),'expression_list':([0,3,],[2,20,]),'expression':([0,3,10,48,],[3,3,25,25,]),'key_val':([0,3,10,48,],[4,4,4,4,]),'table':([0,3,10,48,],[5,5,5,5,]),'inline_table':([0,3,10,21,44,48,55,],[6,6,6,43,43,6,43,]),'table_array':([0,3,10,48,],[7,7,7,7,]),'key':([0,3,9,10,22,26,48,],[8,8,23,8,45,49,8,]),'simple_key':([0,3,9,10,22,26,48,],[11,11,11,11,11,11,11,]),'dotted_key':([0,3,9,10,22,26,48,],[12,12,12,12,12,12,12,]),'quoted_key':([0,3,9,10,22,26,48,],[13,13,13,13,13,13,13,]),'bare_key':([0,3,9,10,22,26,48,],[14,14,14,14,14,14,14,]),'inline_list':([10,48,],[24,53,]),'value':([21,44,55,],[27,51,51,]),'array':([21,44,55,],[41,41,41,]),'value_list':([44,55,],[50,57,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,16 +27,46 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> toml","S'",1,None,None,None),
-  ('toml -> expression NEWLINE expression','toml',3,'p_toml','toml_parser.py',10),
-  ('expression -> COMMENT','expression',1,'p_expression','toml_parser.py',14),
-  ('expression -> keyval NEWLINE','expression',2,'p_expression2','toml_parser.py',17),
-  ('keyval -> IDENTIFIER WHITESPACE EQUAL WHITESPACE value NEWLINE','keyval',6,'p_keyval','toml_parser.py',21),
-  ('keyval -> IDENTIFIER DOT IDENTIFIER EQUAL value','keyval',5,'p_keyval2','toml_parser.py',25),
-  ('value -> STRING','value',1,'p_value','toml_parser.py',29),
-  ('value -> INTEGER','value',1,'p_value2','toml_parser.py',33),
-  ('value -> FLOAT','value',1,'p_value3','toml_parser.py',37),
-  ('value -> BOOLEAN','value',1,'p_value4','toml_parser.py',41),
-  ('value -> DATETIME','value',1,'p_value5','toml_parser.py',45),
-  ('value -> DATE','value',1,'p_value6','toml_parser.py',49),
-  ('value -> TIME','value',1,'p_value7','toml_parser.py',53),
+  ('toml -> expression_list','toml',1,'p_toml','parser_toml.py',24),
+  ('expression_list -> expression','expression_list',1,'p_expression_list','parser_toml.py',28),
+  ('expression_list -> expression expression_list','expression_list',2,'p_expression_list_2','parser_toml.py',32),
+  ('expression -> key_val','expression',1,'p_expression','parser_toml.py',36),
+  ('expression -> table','expression',1,'p_expression','parser_toml.py',37),
+  ('expression -> inline_table','expression',1,'p_expression','parser_toml.py',38),
+  ('expression -> table_array','expression',1,'p_expression','parser_toml.py',39),
+  ('key_val -> key EQUALS value','key_val',3,'p_key_val','parser_toml.py',43),
+  ('key -> simple_key','key',1,'p_key','parser_toml.py',47),
+  ('key -> dotted_key','key',1,'p_key_2','parser_toml.py',51),
+  ('simple_key -> quoted_key','simple_key',1,'p_simple_key','parser_toml.py',55),
+  ('simple_key -> bare_key','simple_key',1,'p_simple_key_2','parser_toml.py',59),
+  ('quoted_key -> STRING','quoted_key',1,'p_quoted_key','parser_toml.py',63),
+  ('quoted_key -> LITERAL_STRING','quoted_key',1,'p_quoted_key','parser_toml.py',64),
+  ('bare_key -> IDENTIFIER','bare_key',1,'p_bare_key','parser_toml.py',68),
+  ('bare_key -> INTEGER','bare_key',1,'p_bare_key_2','parser_toml.py',72),
+  ('dotted_key -> simple_key DOT key','dotted_key',3,'p_dotted_key','parser_toml.py',76),
+  ('dotted_key -> FLOAT','dotted_key',1,'p_dotted_key_2','parser_toml.py',80),
+  ('value -> STRING','value',1,'p_value','parser_toml.py',85),
+  ('value -> LITERAL_STRING','value',1,'p_value','parser_toml.py',86),
+  ('value -> MULTILINE_STRING','value',1,'p_value_2','parser_toml.py',90),
+  ('value -> LITERAL_MULTILINE_STRING','value',1,'p_value_2','parser_toml.py',91),
+  ('value -> BOOLEAN','value',1,'p_value_3','parser_toml.py',95),
+  ('value -> OFFSET_DATE_TIME','value',1,'p_value_4','parser_toml.py',99),
+  ('value -> LOCAL_DATE_TIME','value',1,'p_value_4','parser_toml.py',100),
+  ('value -> LOCAL_DATE','value',1,'p_value_4','parser_toml.py',101),
+  ('value -> LOCAL_TIME','value',1,'p_value_4','parser_toml.py',102),
+  ('value -> INTEGER','value',1,'p_value_5','parser_toml.py',106),
+  ('value -> HEX_INTEGER','value',1,'p_value_5','parser_toml.py',107),
+  ('value -> OCT_INTEGER','value',1,'p_value_5','parser_toml.py',108),
+  ('value -> BIN_INTEGER','value',1,'p_value_5','parser_toml.py',109),
+  ('value -> array','value',1,'p_value_6','parser_toml.py',113),
+  ('value -> FLOAT','value',1,'p_value_7','parser_toml.py',117),
+  ('value -> inline_table','value',1,'p_value_8','parser_toml.py',121),
+  ('array -> LBRACKET value_list RBRACKET','array',3,'p_array','parser_toml.py',125),
+  ('value_list -> value','value_list',1,'p_value_list','parser_toml.py',129),
+  ('value_list -> value COMMA value_list','value_list',3,'p_value_list_2','parser_toml.py',133),
+  ('table -> LBRACKET key RBRACKET','table',3,'p_table','parser_toml.py',137),
+  ('inline_list -> expression','inline_list',1,'p_inline_list','parser_toml.py',141),
+  ('inline_list -> expression COMMA inline_list','inline_list',3,'p_inline_list_2','parser_toml.py',145),
+  ('inline_table -> LBRACE inline_list RBRACE','inline_table',3,'p_inline_table','parser_toml.py',149),
+  ('table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET','table_array',5,'p_table_array','parser_toml.py',153),
 ]

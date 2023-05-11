@@ -1,1 +1,1096 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+    NEWLINE
+
+Grammar
+
+Rule 0     S' -> toml
+Rule 1     toml -> expression_list
+Rule 2     expression_list -> expression
+Rule 3     expression_list -> expression expression_list
+Rule 4     expression -> key_val
+Rule 5     expression -> table
+Rule 6     expression -> inline_table
+Rule 7     expression -> table_array
+Rule 8     key_val -> key EQUALS value
+Rule 9     key -> simple_key
+Rule 10    key -> dotted_key
+Rule 11    simple_key -> quoted_key
+Rule 12    simple_key -> bare_key
+Rule 13    quoted_key -> STRING
+Rule 14    quoted_key -> LITERAL_STRING
+Rule 15    bare_key -> IDENTIFIER
+Rule 16    bare_key -> INTEGER
+Rule 17    dotted_key -> simple_key DOT key
+Rule 18    dotted_key -> FLOAT
+Rule 19    value -> STRING
+Rule 20    value -> LITERAL_STRING
+Rule 21    value -> MULTILINE_STRING
+Rule 22    value -> LITERAL_MULTILINE_STRING
+Rule 23    value -> BOOLEAN
+Rule 24    value -> OFFSET_DATE_TIME
+Rule 25    value -> LOCAL_DATE_TIME
+Rule 26    value -> LOCAL_DATE
+Rule 27    value -> LOCAL_TIME
+Rule 28    value -> INTEGER
+Rule 29    value -> HEX_INTEGER
+Rule 30    value -> OCT_INTEGER
+Rule 31    value -> BIN_INTEGER
+Rule 32    value -> array
+Rule 33    value -> FLOAT
+Rule 34    value -> inline_table
+Rule 35    array -> LBRACKET value_list RBRACKET
+Rule 36    value_list -> value
+Rule 37    value_list -> value COMMA value_list
+Rule 38    table -> LBRACKET key RBRACKET
+Rule 39    inline_list -> expression
+Rule 40    inline_list -> expression COMMA inline_list
+Rule 41    inline_table -> LBRACE inline_list RBRACE
+Rule 42    table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET
+
+Terminals, with rules where they appear
+
+BIN_INTEGER          : 31
+BOOLEAN              : 23
+COMMA                : 37 40
+COMMENT              : 
+DOT                  : 17
+EQUALS               : 8
+FLOAT                : 18 33
+HEX_INTEGER          : 29
+IDENTIFIER           : 15
+INTEGER              : 16 28
+LBRACE               : 41
+LBRACKET             : 35 38 42 42
+LITERAL_MULTILINE_STRING : 22
+LITERAL_STRING       : 14 20
+LOCAL_DATE           : 26
+LOCAL_DATE_TIME      : 25
+LOCAL_TIME           : 27
+MULTILINE_STRING     : 21
+NEWLINE              : 
+OCT_INTEGER          : 30
+OFFSET_DATE_TIME     : 24
+RBRACE               : 41
+RBRACKET             : 35 38 42 42
+STRING               : 13 19
+error                : 
+
+Nonterminals, with rules where they appear
+
+array                : 32
+bare_key             : 12
+dotted_key           : 10
+expression           : 2 3 39 40
+expression_list      : 1 3
+inline_list          : 40 41
+inline_table         : 6 34
+key                  : 8 17 38 42
+key_val              : 4
+quoted_key           : 11
+simple_key           : 9 17
+table                : 5
+table_array          : 7
+toml                 : 0
+value                : 8 36 37
+value_list           : 35 37
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . toml
+    (1) toml -> . expression_list
+    (2) expression_list -> . expression
+    (3) expression_list -> . expression expression_list
+    (4) expression -> . key_val
+    (5) expression -> . table
+    (6) expression -> . inline_table
+    (7) expression -> . table_array
+    (8) key_val -> . key EQUALS value
+    (38) table -> . LBRACKET key RBRACKET
+    (41) inline_table -> . LBRACE inline_list RBRACE
+    (42) table_array -> . LBRACKET LBRACKET key RBRACKET RBRACKET
+    (9) key -> . simple_key
+    (10) key -> . dotted_key
+    (11) simple_key -> . quoted_key
+    (12) simple_key -> . bare_key
+    (17) dotted_key -> . simple_key DOT key
+    (18) dotted_key -> . FLOAT
+    (13) quoted_key -> . STRING
+    (14) quoted_key -> . LITERAL_STRING
+    (15) bare_key -> . IDENTIFIER
+    (16) bare_key -> . INTEGER
+
+    LBRACKET        shift and go to state 9
+    LBRACE          shift and go to state 10
+    FLOAT           shift and go to state 15
+    STRING          shift and go to state 16
+    LITERAL_STRING  shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    INTEGER         shift and go to state 19
+
+    toml                           shift and go to state 1
+    expression_list                shift and go to state 2
+    expression                     shift and go to state 3
+    key_val                        shift and go to state 4
+    table                          shift and go to state 5
+    inline_table                   shift and go to state 6
+    table_array                    shift and go to state 7
+    key                            shift and go to state 8
+    simple_key                     shift and go to state 11
+    dotted_key                     shift and go to state 12
+    quoted_key                     shift and go to state 13
+    bare_key                       shift and go to state 14
+
+state 1
+
+    (0) S' -> toml .
+
+
+
+state 2
+
+    (1) toml -> expression_list .
+
+    $end            reduce using rule 1 (toml -> expression_list .)
+
+
+state 3
+
+    (2) expression_list -> expression .
+    (3) expression_list -> expression . expression_list
+    (2) expression_list -> . expression
+    (3) expression_list -> . expression expression_list
+    (4) expression -> . key_val
+    (5) expression -> . table
+    (6) expression -> . inline_table
+    (7) expression -> . table_array
+    (8) key_val -> . key EQUALS value
+    (38) table -> . LBRACKET key RBRACKET
+    (41) inline_table -> . LBRACE inline_list RBRACE
+    (42) table_array -> . LBRACKET LBRACKET key RBRACKET RBRACKET
+    (9) key -> . simple_key
+    (10) key -> . dotted_key
+    (11) simple_key -> . quoted_key
+    (12) simple_key -> . bare_key
+    (17) dotted_key -> . simple_key DOT key
+    (18) dotted_key -> . FLOAT
+    (13) quoted_key -> . STRING
+    (14) quoted_key -> . LITERAL_STRING
+    (15) bare_key -> . IDENTIFIER
+    (16) bare_key -> . INTEGER
+
+    $end            reduce using rule 2 (expression_list -> expression .)
+    LBRACKET        shift and go to state 9
+    LBRACE          shift and go to state 10
+    FLOAT           shift and go to state 15
+    STRING          shift and go to state 16
+    LITERAL_STRING  shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    INTEGER         shift and go to state 19
+
+    expression                     shift and go to state 3
+    expression_list                shift and go to state 20
+    key_val                        shift and go to state 4
+    table                          shift and go to state 5
+    inline_table                   shift and go to state 6
+    table_array                    shift and go to state 7
+    key                            shift and go to state 8
+    simple_key                     shift and go to state 11
+    dotted_key                     shift and go to state 12
+    quoted_key                     shift and go to state 13
+    bare_key                       shift and go to state 14
+
+state 4
+
+    (4) expression -> key_val .
+
+    LBRACKET        reduce using rule 4 (expression -> key_val .)
+    LBRACE          reduce using rule 4 (expression -> key_val .)
+    FLOAT           reduce using rule 4 (expression -> key_val .)
+    STRING          reduce using rule 4 (expression -> key_val .)
+    LITERAL_STRING  reduce using rule 4 (expression -> key_val .)
+    IDENTIFIER      reduce using rule 4 (expression -> key_val .)
+    INTEGER         reduce using rule 4 (expression -> key_val .)
+    $end            reduce using rule 4 (expression -> key_val .)
+    COMMA           reduce using rule 4 (expression -> key_val .)
+    RBRACE          reduce using rule 4 (expression -> key_val .)
+
+
+state 5
+
+    (5) expression -> table .
+
+    LBRACKET        reduce using rule 5 (expression -> table .)
+    LBRACE          reduce using rule 5 (expression -> table .)
+    FLOAT           reduce using rule 5 (expression -> table .)
+    STRING          reduce using rule 5 (expression -> table .)
+    LITERAL_STRING  reduce using rule 5 (expression -> table .)
+    IDENTIFIER      reduce using rule 5 (expression -> table .)
+    INTEGER         reduce using rule 5 (expression -> table .)
+    $end            reduce using rule 5 (expression -> table .)
+    COMMA           reduce using rule 5 (expression -> table .)
+    RBRACE          reduce using rule 5 (expression -> table .)
+
+
+state 6
+
+    (6) expression -> inline_table .
+
+    LBRACKET        reduce using rule 6 (expression -> inline_table .)
+    LBRACE          reduce using rule 6 (expression -> inline_table .)
+    FLOAT           reduce using rule 6 (expression -> inline_table .)
+    STRING          reduce using rule 6 (expression -> inline_table .)
+    LITERAL_STRING  reduce using rule 6 (expression -> inline_table .)
+    IDENTIFIER      reduce using rule 6 (expression -> inline_table .)
+    INTEGER         reduce using rule 6 (expression -> inline_table .)
+    $end            reduce using rule 6 (expression -> inline_table .)
+    COMMA           reduce using rule 6 (expression -> inline_table .)
+    RBRACE          reduce using rule 6 (expression -> inline_table .)
+
+
+state 7
+
+    (7) expression -> table_array .
+
+    LBRACKET        reduce using rule 7 (expression -> table_array .)
+    LBRACE          reduce using rule 7 (expression -> table_array .)
+    FLOAT           reduce using rule 7 (expression -> table_array .)
+    STRING          reduce using rule 7 (expression -> table_array .)
+    LITERAL_STRING  reduce using rule 7 (expression -> table_array .)
+    IDENTIFIER      reduce using rule 7 (expression -> table_array .)
+    INTEGER         reduce using rule 7 (expression -> table_array .)
+    $end            reduce using rule 7 (expression -> table_array .)
+    COMMA           reduce using rule 7 (expression -> table_array .)
+    RBRACE          reduce using rule 7 (expression -> table_array .)
+
+
+state 8
+
+    (8) key_val -> key . EQUALS value
+
+    EQUALS          shift and go to state 21
+
+
+state 9
+
+    (38) table -> LBRACKET . key RBRACKET
+    (42) table_array -> LBRACKET . LBRACKET key RBRACKET RBRACKET
+    (9) key -> . simple_key
+    (10) key -> . dotted_key
+    (11) simple_key -> . quoted_key
+    (12) simple_key -> . bare_key
+    (17) dotted_key -> . simple_key DOT key
+    (18) dotted_key -> . FLOAT
+    (13) quoted_key -> . STRING
+    (14) quoted_key -> . LITERAL_STRING
+    (15) bare_key -> . IDENTIFIER
+    (16) bare_key -> . INTEGER
+
+    LBRACKET        shift and go to state 22
+    FLOAT           shift and go to state 15
+    STRING          shift and go to state 16
+    LITERAL_STRING  shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    INTEGER         shift and go to state 19
+
+    key                            shift and go to state 23
+    simple_key                     shift and go to state 11
+    dotted_key                     shift and go to state 12
+    quoted_key                     shift and go to state 13
+    bare_key                       shift and go to state 14
+
+state 10
+
+    (41) inline_table -> LBRACE . inline_list RBRACE
+    (39) inline_list -> . expression
+    (40) inline_list -> . expression COMMA inline_list
+    (4) expression -> . key_val
+    (5) expression -> . table
+    (6) expression -> . inline_table
+    (7) expression -> . table_array
+    (8) key_val -> . key EQUALS value
+    (38) table -> . LBRACKET key RBRACKET
+    (41) inline_table -> . LBRACE inline_list RBRACE
+    (42) table_array -> . LBRACKET LBRACKET key RBRACKET RBRACKET
+    (9) key -> . simple_key
+    (10) key -> . dotted_key
+    (11) simple_key -> . quoted_key
+    (12) simple_key -> . bare_key
+    (17) dotted_key -> . simple_key DOT key
+    (18) dotted_key -> . FLOAT
+    (13) quoted_key -> . STRING
+    (14) quoted_key -> . LITERAL_STRING
+    (15) bare_key -> . IDENTIFIER
+    (16) bare_key -> . INTEGER
+
+    LBRACKET        shift and go to state 9
+    LBRACE          shift and go to state 10
+    FLOAT           shift and go to state 15
+    STRING          shift and go to state 16
+    LITERAL_STRING  shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    INTEGER         shift and go to state 19
+
+    inline_list                    shift and go to state 24
+    expression                     shift and go to state 25
+    key_val                        shift and go to state 4
+    table                          shift and go to state 5
+    inline_table                   shift and go to state 6
+    table_array                    shift and go to state 7
+    key                            shift and go to state 8
+    simple_key                     shift and go to state 11
+    dotted_key                     shift and go to state 12
+    quoted_key                     shift and go to state 13
+    bare_key                       shift and go to state 14
+
+state 11
+
+    (9) key -> simple_key .
+    (17) dotted_key -> simple_key . DOT key
+
+    EQUALS          reduce using rule 9 (key -> simple_key .)
+    RBRACKET        reduce using rule 9 (key -> simple_key .)
+    DOT             shift and go to state 26
+
+
+state 12
+
+    (10) key -> dotted_key .
+
+    EQUALS          reduce using rule 10 (key -> dotted_key .)
+    RBRACKET        reduce using rule 10 (key -> dotted_key .)
+
+
+state 13
+
+    (11) simple_key -> quoted_key .
+
+    DOT             reduce using rule 11 (simple_key -> quoted_key .)
+    EQUALS          reduce using rule 11 (simple_key -> quoted_key .)
+    RBRACKET        reduce using rule 11 (simple_key -> quoted_key .)
+
+
+state 14
+
+    (12) simple_key -> bare_key .
+
+    DOT             reduce using rule 12 (simple_key -> bare_key .)
+    EQUALS          reduce using rule 12 (simple_key -> bare_key .)
+    RBRACKET        reduce using rule 12 (simple_key -> bare_key .)
+
+
+state 15
+
+    (18) dotted_key -> FLOAT .
+
+    EQUALS          reduce using rule 18 (dotted_key -> FLOAT .)
+    RBRACKET        reduce using rule 18 (dotted_key -> FLOAT .)
+
+
+state 16
+
+    (13) quoted_key -> STRING .
+
+    DOT             reduce using rule 13 (quoted_key -> STRING .)
+    EQUALS          reduce using rule 13 (quoted_key -> STRING .)
+    RBRACKET        reduce using rule 13 (quoted_key -> STRING .)
+
+
+state 17
+
+    (14) quoted_key -> LITERAL_STRING .
+
+    DOT             reduce using rule 14 (quoted_key -> LITERAL_STRING .)
+    EQUALS          reduce using rule 14 (quoted_key -> LITERAL_STRING .)
+    RBRACKET        reduce using rule 14 (quoted_key -> LITERAL_STRING .)
+
+
+state 18
+
+    (15) bare_key -> IDENTIFIER .
+
+    DOT             reduce using rule 15 (bare_key -> IDENTIFIER .)
+    EQUALS          reduce using rule 15 (bare_key -> IDENTIFIER .)
+    RBRACKET        reduce using rule 15 (bare_key -> IDENTIFIER .)
+
+
+state 19
+
+    (16) bare_key -> INTEGER .
+
+    DOT             reduce using rule 16 (bare_key -> INTEGER .)
+    EQUALS          reduce using rule 16 (bare_key -> INTEGER .)
+    RBRACKET        reduce using rule 16 (bare_key -> INTEGER .)
+
+
+state 20
+
+    (3) expression_list -> expression expression_list .
+
+    $end            reduce using rule 3 (expression_list -> expression expression_list .)
+
+
+state 21
+
+    (8) key_val -> key EQUALS . value
+    (19) value -> . STRING
+    (20) value -> . LITERAL_STRING
+    (21) value -> . MULTILINE_STRING
+    (22) value -> . LITERAL_MULTILINE_STRING
+    (23) value -> . BOOLEAN
+    (24) value -> . OFFSET_DATE_TIME
+    (25) value -> . LOCAL_DATE_TIME
+    (26) value -> . LOCAL_DATE
+    (27) value -> . LOCAL_TIME
+    (28) value -> . INTEGER
+    (29) value -> . HEX_INTEGER
+    (30) value -> . OCT_INTEGER
+    (31) value -> . BIN_INTEGER
+    (32) value -> . array
+    (33) value -> . FLOAT
+    (34) value -> . inline_table
+    (35) array -> . LBRACKET value_list RBRACKET
+    (41) inline_table -> . LBRACE inline_list RBRACE
+
+    STRING          shift and go to state 28
+    LITERAL_STRING  shift and go to state 29
+    MULTILINE_STRING shift and go to state 30
+    LITERAL_MULTILINE_STRING shift and go to state 31
+    BOOLEAN         shift and go to state 32
+    OFFSET_DATE_TIME shift and go to state 33
+    LOCAL_DATE_TIME shift and go to state 34
+    LOCAL_DATE      shift and go to state 35
+    LOCAL_TIME      shift and go to state 36
+    INTEGER         shift and go to state 37
+    HEX_INTEGER     shift and go to state 38
+    OCT_INTEGER     shift and go to state 39
+    BIN_INTEGER     shift and go to state 40
+    FLOAT           shift and go to state 42
+    LBRACKET        shift and go to state 44
+    LBRACE          shift and go to state 10
+
+    value                          shift and go to state 27
+    array                          shift and go to state 41
+    inline_table                   shift and go to state 43
+
+state 22
+
+    (42) table_array -> LBRACKET LBRACKET . key RBRACKET RBRACKET
+    (9) key -> . simple_key
+    (10) key -> . dotted_key
+    (11) simple_key -> . quoted_key
+    (12) simple_key -> . bare_key
+    (17) dotted_key -> . simple_key DOT key
+    (18) dotted_key -> . FLOAT
+    (13) quoted_key -> . STRING
+    (14) quoted_key -> . LITERAL_STRING
+    (15) bare_key -> . IDENTIFIER
+    (16) bare_key -> . INTEGER
+
+    FLOAT           shift and go to state 15
+    STRING          shift and go to state 16
+    LITERAL_STRING  shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    INTEGER         shift and go to state 19
+
+    key                            shift and go to state 45
+    simple_key                     shift and go to state 11
+    dotted_key                     shift and go to state 12
+    quoted_key                     shift and go to state 13
+    bare_key                       shift and go to state 14
+
+state 23
+
+    (38) table -> LBRACKET key . RBRACKET
+
+    RBRACKET        shift and go to state 46
+
+
+state 24
+
+    (41) inline_table -> LBRACE inline_list . RBRACE
+
+    RBRACE          shift and go to state 47
+
+
+state 25
+
+    (39) inline_list -> expression .
+    (40) inline_list -> expression . COMMA inline_list
+
+    RBRACE          reduce using rule 39 (inline_list -> expression .)
+    COMMA           shift and go to state 48
+
+
+state 26
+
+    (17) dotted_key -> simple_key DOT . key
+    (9) key -> . simple_key
+    (10) key -> . dotted_key
+    (11) simple_key -> . quoted_key
+    (12) simple_key -> . bare_key
+    (17) dotted_key -> . simple_key DOT key
+    (18) dotted_key -> . FLOAT
+    (13) quoted_key -> . STRING
+    (14) quoted_key -> . LITERAL_STRING
+    (15) bare_key -> . IDENTIFIER
+    (16) bare_key -> . INTEGER
+
+    FLOAT           shift and go to state 15
+    STRING          shift and go to state 16
+    LITERAL_STRING  shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    INTEGER         shift and go to state 19
+
+    simple_key                     shift and go to state 11
+    key                            shift and go to state 49
+    dotted_key                     shift and go to state 12
+    quoted_key                     shift and go to state 13
+    bare_key                       shift and go to state 14
+
+state 27
+
+    (8) key_val -> key EQUALS value .
+
+    LBRACKET        reduce using rule 8 (key_val -> key EQUALS value .)
+    LBRACE          reduce using rule 8 (key_val -> key EQUALS value .)
+    FLOAT           reduce using rule 8 (key_val -> key EQUALS value .)
+    STRING          reduce using rule 8 (key_val -> key EQUALS value .)
+    LITERAL_STRING  reduce using rule 8 (key_val -> key EQUALS value .)
+    IDENTIFIER      reduce using rule 8 (key_val -> key EQUALS value .)
+    INTEGER         reduce using rule 8 (key_val -> key EQUALS value .)
+    $end            reduce using rule 8 (key_val -> key EQUALS value .)
+    COMMA           reduce using rule 8 (key_val -> key EQUALS value .)
+    RBRACE          reduce using rule 8 (key_val -> key EQUALS value .)
+
+
+state 28
+
+    (19) value -> STRING .
+
+    LBRACKET        reduce using rule 19 (value -> STRING .)
+    LBRACE          reduce using rule 19 (value -> STRING .)
+    FLOAT           reduce using rule 19 (value -> STRING .)
+    STRING          reduce using rule 19 (value -> STRING .)
+    LITERAL_STRING  reduce using rule 19 (value -> STRING .)
+    IDENTIFIER      reduce using rule 19 (value -> STRING .)
+    INTEGER         reduce using rule 19 (value -> STRING .)
+    $end            reduce using rule 19 (value -> STRING .)
+    COMMA           reduce using rule 19 (value -> STRING .)
+    RBRACE          reduce using rule 19 (value -> STRING .)
+    RBRACKET        reduce using rule 19 (value -> STRING .)
+
+
+state 29
+
+    (20) value -> LITERAL_STRING .
+
+    LBRACKET        reduce using rule 20 (value -> LITERAL_STRING .)
+    LBRACE          reduce using rule 20 (value -> LITERAL_STRING .)
+    FLOAT           reduce using rule 20 (value -> LITERAL_STRING .)
+    STRING          reduce using rule 20 (value -> LITERAL_STRING .)
+    LITERAL_STRING  reduce using rule 20 (value -> LITERAL_STRING .)
+    IDENTIFIER      reduce using rule 20 (value -> LITERAL_STRING .)
+    INTEGER         reduce using rule 20 (value -> LITERAL_STRING .)
+    $end            reduce using rule 20 (value -> LITERAL_STRING .)
+    COMMA           reduce using rule 20 (value -> LITERAL_STRING .)
+    RBRACE          reduce using rule 20 (value -> LITERAL_STRING .)
+    RBRACKET        reduce using rule 20 (value -> LITERAL_STRING .)
+
+
+state 30
+
+    (21) value -> MULTILINE_STRING .
+
+    LBRACKET        reduce using rule 21 (value -> MULTILINE_STRING .)
+    LBRACE          reduce using rule 21 (value -> MULTILINE_STRING .)
+    FLOAT           reduce using rule 21 (value -> MULTILINE_STRING .)
+    STRING          reduce using rule 21 (value -> MULTILINE_STRING .)
+    LITERAL_STRING  reduce using rule 21 (value -> MULTILINE_STRING .)
+    IDENTIFIER      reduce using rule 21 (value -> MULTILINE_STRING .)
+    INTEGER         reduce using rule 21 (value -> MULTILINE_STRING .)
+    $end            reduce using rule 21 (value -> MULTILINE_STRING .)
+    COMMA           reduce using rule 21 (value -> MULTILINE_STRING .)
+    RBRACE          reduce using rule 21 (value -> MULTILINE_STRING .)
+    RBRACKET        reduce using rule 21 (value -> MULTILINE_STRING .)
+
+
+state 31
+
+    (22) value -> LITERAL_MULTILINE_STRING .
+
+    LBRACKET        reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    LBRACE          reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    FLOAT           reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    STRING          reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    LITERAL_STRING  reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    IDENTIFIER      reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    INTEGER         reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    $end            reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    COMMA           reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    RBRACE          reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+    RBRACKET        reduce using rule 22 (value -> LITERAL_MULTILINE_STRING .)
+
+
+state 32
+
+    (23) value -> BOOLEAN .
+
+    LBRACKET        reduce using rule 23 (value -> BOOLEAN .)
+    LBRACE          reduce using rule 23 (value -> BOOLEAN .)
+    FLOAT           reduce using rule 23 (value -> BOOLEAN .)
+    STRING          reduce using rule 23 (value -> BOOLEAN .)
+    LITERAL_STRING  reduce using rule 23 (value -> BOOLEAN .)
+    IDENTIFIER      reduce using rule 23 (value -> BOOLEAN .)
+    INTEGER         reduce using rule 23 (value -> BOOLEAN .)
+    $end            reduce using rule 23 (value -> BOOLEAN .)
+    COMMA           reduce using rule 23 (value -> BOOLEAN .)
+    RBRACE          reduce using rule 23 (value -> BOOLEAN .)
+    RBRACKET        reduce using rule 23 (value -> BOOLEAN .)
+
+
+state 33
+
+    (24) value -> OFFSET_DATE_TIME .
+
+    LBRACKET        reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    LBRACE          reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    FLOAT           reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    STRING          reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    LITERAL_STRING  reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    IDENTIFIER      reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    INTEGER         reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    $end            reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    COMMA           reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    RBRACE          reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+    RBRACKET        reduce using rule 24 (value -> OFFSET_DATE_TIME .)
+
+
+state 34
+
+    (25) value -> LOCAL_DATE_TIME .
+
+    LBRACKET        reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    LBRACE          reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    FLOAT           reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    STRING          reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    LITERAL_STRING  reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    IDENTIFIER      reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    INTEGER         reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    $end            reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    COMMA           reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    RBRACE          reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+    RBRACKET        reduce using rule 25 (value -> LOCAL_DATE_TIME .)
+
+
+state 35
+
+    (26) value -> LOCAL_DATE .
+
+    LBRACKET        reduce using rule 26 (value -> LOCAL_DATE .)
+    LBRACE          reduce using rule 26 (value -> LOCAL_DATE .)
+    FLOAT           reduce using rule 26 (value -> LOCAL_DATE .)
+    STRING          reduce using rule 26 (value -> LOCAL_DATE .)
+    LITERAL_STRING  reduce using rule 26 (value -> LOCAL_DATE .)
+    IDENTIFIER      reduce using rule 26 (value -> LOCAL_DATE .)
+    INTEGER         reduce using rule 26 (value -> LOCAL_DATE .)
+    $end            reduce using rule 26 (value -> LOCAL_DATE .)
+    COMMA           reduce using rule 26 (value -> LOCAL_DATE .)
+    RBRACE          reduce using rule 26 (value -> LOCAL_DATE .)
+    RBRACKET        reduce using rule 26 (value -> LOCAL_DATE .)
+
+
+state 36
+
+    (27) value -> LOCAL_TIME .
+
+    LBRACKET        reduce using rule 27 (value -> LOCAL_TIME .)
+    LBRACE          reduce using rule 27 (value -> LOCAL_TIME .)
+    FLOAT           reduce using rule 27 (value -> LOCAL_TIME .)
+    STRING          reduce using rule 27 (value -> LOCAL_TIME .)
+    LITERAL_STRING  reduce using rule 27 (value -> LOCAL_TIME .)
+    IDENTIFIER      reduce using rule 27 (value -> LOCAL_TIME .)
+    INTEGER         reduce using rule 27 (value -> LOCAL_TIME .)
+    $end            reduce using rule 27 (value -> LOCAL_TIME .)
+    COMMA           reduce using rule 27 (value -> LOCAL_TIME .)
+    RBRACE          reduce using rule 27 (value -> LOCAL_TIME .)
+    RBRACKET        reduce using rule 27 (value -> LOCAL_TIME .)
+
+
+state 37
+
+    (28) value -> INTEGER .
+
+    LBRACKET        reduce using rule 28 (value -> INTEGER .)
+    LBRACE          reduce using rule 28 (value -> INTEGER .)
+    FLOAT           reduce using rule 28 (value -> INTEGER .)
+    STRING          reduce using rule 28 (value -> INTEGER .)
+    LITERAL_STRING  reduce using rule 28 (value -> INTEGER .)
+    IDENTIFIER      reduce using rule 28 (value -> INTEGER .)
+    INTEGER         reduce using rule 28 (value -> INTEGER .)
+    $end            reduce using rule 28 (value -> INTEGER .)
+    COMMA           reduce using rule 28 (value -> INTEGER .)
+    RBRACE          reduce using rule 28 (value -> INTEGER .)
+    RBRACKET        reduce using rule 28 (value -> INTEGER .)
+
+
+state 38
+
+    (29) value -> HEX_INTEGER .
+
+    LBRACKET        reduce using rule 29 (value -> HEX_INTEGER .)
+    LBRACE          reduce using rule 29 (value -> HEX_INTEGER .)
+    FLOAT           reduce using rule 29 (value -> HEX_INTEGER .)
+    STRING          reduce using rule 29 (value -> HEX_INTEGER .)
+    LITERAL_STRING  reduce using rule 29 (value -> HEX_INTEGER .)
+    IDENTIFIER      reduce using rule 29 (value -> HEX_INTEGER .)
+    INTEGER         reduce using rule 29 (value -> HEX_INTEGER .)
+    $end            reduce using rule 29 (value -> HEX_INTEGER .)
+    COMMA           reduce using rule 29 (value -> HEX_INTEGER .)
+    RBRACE          reduce using rule 29 (value -> HEX_INTEGER .)
+    RBRACKET        reduce using rule 29 (value -> HEX_INTEGER .)
+
+
+state 39
+
+    (30) value -> OCT_INTEGER .
+
+    LBRACKET        reduce using rule 30 (value -> OCT_INTEGER .)
+    LBRACE          reduce using rule 30 (value -> OCT_INTEGER .)
+    FLOAT           reduce using rule 30 (value -> OCT_INTEGER .)
+    STRING          reduce using rule 30 (value -> OCT_INTEGER .)
+    LITERAL_STRING  reduce using rule 30 (value -> OCT_INTEGER .)
+    IDENTIFIER      reduce using rule 30 (value -> OCT_INTEGER .)
+    INTEGER         reduce using rule 30 (value -> OCT_INTEGER .)
+    $end            reduce using rule 30 (value -> OCT_INTEGER .)
+    COMMA           reduce using rule 30 (value -> OCT_INTEGER .)
+    RBRACE          reduce using rule 30 (value -> OCT_INTEGER .)
+    RBRACKET        reduce using rule 30 (value -> OCT_INTEGER .)
+
+
+state 40
+
+    (31) value -> BIN_INTEGER .
+
+    LBRACKET        reduce using rule 31 (value -> BIN_INTEGER .)
+    LBRACE          reduce using rule 31 (value -> BIN_INTEGER .)
+    FLOAT           reduce using rule 31 (value -> BIN_INTEGER .)
+    STRING          reduce using rule 31 (value -> BIN_INTEGER .)
+    LITERAL_STRING  reduce using rule 31 (value -> BIN_INTEGER .)
+    IDENTIFIER      reduce using rule 31 (value -> BIN_INTEGER .)
+    INTEGER         reduce using rule 31 (value -> BIN_INTEGER .)
+    $end            reduce using rule 31 (value -> BIN_INTEGER .)
+    COMMA           reduce using rule 31 (value -> BIN_INTEGER .)
+    RBRACE          reduce using rule 31 (value -> BIN_INTEGER .)
+    RBRACKET        reduce using rule 31 (value -> BIN_INTEGER .)
+
+
+state 41
+
+    (32) value -> array .
+
+    LBRACKET        reduce using rule 32 (value -> array .)
+    LBRACE          reduce using rule 32 (value -> array .)
+    FLOAT           reduce using rule 32 (value -> array .)
+    STRING          reduce using rule 32 (value -> array .)
+    LITERAL_STRING  reduce using rule 32 (value -> array .)
+    IDENTIFIER      reduce using rule 32 (value -> array .)
+    INTEGER         reduce using rule 32 (value -> array .)
+    $end            reduce using rule 32 (value -> array .)
+    COMMA           reduce using rule 32 (value -> array .)
+    RBRACE          reduce using rule 32 (value -> array .)
+    RBRACKET        reduce using rule 32 (value -> array .)
+
+
+state 42
+
+    (33) value -> FLOAT .
+
+    LBRACKET        reduce using rule 33 (value -> FLOAT .)
+    LBRACE          reduce using rule 33 (value -> FLOAT .)
+    FLOAT           reduce using rule 33 (value -> FLOAT .)
+    STRING          reduce using rule 33 (value -> FLOAT .)
+    LITERAL_STRING  reduce using rule 33 (value -> FLOAT .)
+    IDENTIFIER      reduce using rule 33 (value -> FLOAT .)
+    INTEGER         reduce using rule 33 (value -> FLOAT .)
+    $end            reduce using rule 33 (value -> FLOAT .)
+    COMMA           reduce using rule 33 (value -> FLOAT .)
+    RBRACE          reduce using rule 33 (value -> FLOAT .)
+    RBRACKET        reduce using rule 33 (value -> FLOAT .)
+
+
+state 43
+
+    (34) value -> inline_table .
+
+    LBRACKET        reduce using rule 34 (value -> inline_table .)
+    LBRACE          reduce using rule 34 (value -> inline_table .)
+    FLOAT           reduce using rule 34 (value -> inline_table .)
+    STRING          reduce using rule 34 (value -> inline_table .)
+    LITERAL_STRING  reduce using rule 34 (value -> inline_table .)
+    IDENTIFIER      reduce using rule 34 (value -> inline_table .)
+    INTEGER         reduce using rule 34 (value -> inline_table .)
+    $end            reduce using rule 34 (value -> inline_table .)
+    COMMA           reduce using rule 34 (value -> inline_table .)
+    RBRACE          reduce using rule 34 (value -> inline_table .)
+    RBRACKET        reduce using rule 34 (value -> inline_table .)
+
+
+state 44
+
+    (35) array -> LBRACKET . value_list RBRACKET
+    (36) value_list -> . value
+    (37) value_list -> . value COMMA value_list
+    (19) value -> . STRING
+    (20) value -> . LITERAL_STRING
+    (21) value -> . MULTILINE_STRING
+    (22) value -> . LITERAL_MULTILINE_STRING
+    (23) value -> . BOOLEAN
+    (24) value -> . OFFSET_DATE_TIME
+    (25) value -> . LOCAL_DATE_TIME
+    (26) value -> . LOCAL_DATE
+    (27) value -> . LOCAL_TIME
+    (28) value -> . INTEGER
+    (29) value -> . HEX_INTEGER
+    (30) value -> . OCT_INTEGER
+    (31) value -> . BIN_INTEGER
+    (32) value -> . array
+    (33) value -> . FLOAT
+    (34) value -> . inline_table
+    (35) array -> . LBRACKET value_list RBRACKET
+    (41) inline_table -> . LBRACE inline_list RBRACE
+
+    STRING          shift and go to state 28
+    LITERAL_STRING  shift and go to state 29
+    MULTILINE_STRING shift and go to state 30
+    LITERAL_MULTILINE_STRING shift and go to state 31
+    BOOLEAN         shift and go to state 32
+    OFFSET_DATE_TIME shift and go to state 33
+    LOCAL_DATE_TIME shift and go to state 34
+    LOCAL_DATE      shift and go to state 35
+    LOCAL_TIME      shift and go to state 36
+    INTEGER         shift and go to state 37
+    HEX_INTEGER     shift and go to state 38
+    OCT_INTEGER     shift and go to state 39
+    BIN_INTEGER     shift and go to state 40
+    FLOAT           shift and go to state 42
+    LBRACKET        shift and go to state 44
+    LBRACE          shift and go to state 10
+
+    value_list                     shift and go to state 50
+    value                          shift and go to state 51
+    array                          shift and go to state 41
+    inline_table                   shift and go to state 43
+
+state 45
+
+    (42) table_array -> LBRACKET LBRACKET key . RBRACKET RBRACKET
+
+    RBRACKET        shift and go to state 52
+
+
+state 46
+
+    (38) table -> LBRACKET key RBRACKET .
+
+    LBRACKET        reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+    LBRACE          reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+    FLOAT           reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+    STRING          reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+    LITERAL_STRING  reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+    IDENTIFIER      reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+    INTEGER         reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+    $end            reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+    COMMA           reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+    RBRACE          reduce using rule 38 (table -> LBRACKET key RBRACKET .)
+
+
+state 47
+
+    (41) inline_table -> LBRACE inline_list RBRACE .
+
+    LBRACKET        reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    LBRACE          reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    FLOAT           reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    STRING          reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    LITERAL_STRING  reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    IDENTIFIER      reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    INTEGER         reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    $end            reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    COMMA           reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    RBRACE          reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+    RBRACKET        reduce using rule 41 (inline_table -> LBRACE inline_list RBRACE .)
+
+
+state 48
+
+    (40) inline_list -> expression COMMA . inline_list
+    (39) inline_list -> . expression
+    (40) inline_list -> . expression COMMA inline_list
+    (4) expression -> . key_val
+    (5) expression -> . table
+    (6) expression -> . inline_table
+    (7) expression -> . table_array
+    (8) key_val -> . key EQUALS value
+    (38) table -> . LBRACKET key RBRACKET
+    (41) inline_table -> . LBRACE inline_list RBRACE
+    (42) table_array -> . LBRACKET LBRACKET key RBRACKET RBRACKET
+    (9) key -> . simple_key
+    (10) key -> . dotted_key
+    (11) simple_key -> . quoted_key
+    (12) simple_key -> . bare_key
+    (17) dotted_key -> . simple_key DOT key
+    (18) dotted_key -> . FLOAT
+    (13) quoted_key -> . STRING
+    (14) quoted_key -> . LITERAL_STRING
+    (15) bare_key -> . IDENTIFIER
+    (16) bare_key -> . INTEGER
+
+    LBRACKET        shift and go to state 9
+    LBRACE          shift and go to state 10
+    FLOAT           shift and go to state 15
+    STRING          shift and go to state 16
+    LITERAL_STRING  shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    INTEGER         shift and go to state 19
+
+    expression                     shift and go to state 25
+    inline_list                    shift and go to state 53
+    key_val                        shift and go to state 4
+    table                          shift and go to state 5
+    inline_table                   shift and go to state 6
+    table_array                    shift and go to state 7
+    key                            shift and go to state 8
+    simple_key                     shift and go to state 11
+    dotted_key                     shift and go to state 12
+    quoted_key                     shift and go to state 13
+    bare_key                       shift and go to state 14
+
+state 49
+
+    (17) dotted_key -> simple_key DOT key .
+
+    EQUALS          reduce using rule 17 (dotted_key -> simple_key DOT key .)
+    RBRACKET        reduce using rule 17 (dotted_key -> simple_key DOT key .)
+
+
+state 50
+
+    (35) array -> LBRACKET value_list . RBRACKET
+
+    RBRACKET        shift and go to state 54
+
+
+state 51
+
+    (36) value_list -> value .
+    (37) value_list -> value . COMMA value_list
+
+    RBRACKET        reduce using rule 36 (value_list -> value .)
+    COMMA           shift and go to state 55
+
+
+state 52
+
+    (42) table_array -> LBRACKET LBRACKET key RBRACKET . RBRACKET
+
+    RBRACKET        shift and go to state 56
+
+
+state 53
+
+    (40) inline_list -> expression COMMA inline_list .
+
+    RBRACE          reduce using rule 40 (inline_list -> expression COMMA inline_list .)
+
+
+state 54
+
+    (35) array -> LBRACKET value_list RBRACKET .
+
+    LBRACKET        reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    LBRACE          reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    FLOAT           reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    STRING          reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    LITERAL_STRING  reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    IDENTIFIER      reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    INTEGER         reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    $end            reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    COMMA           reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    RBRACE          reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+    RBRACKET        reduce using rule 35 (array -> LBRACKET value_list RBRACKET .)
+
+
+state 55
+
+    (37) value_list -> value COMMA . value_list
+    (36) value_list -> . value
+    (37) value_list -> . value COMMA value_list
+    (19) value -> . STRING
+    (20) value -> . LITERAL_STRING
+    (21) value -> . MULTILINE_STRING
+    (22) value -> . LITERAL_MULTILINE_STRING
+    (23) value -> . BOOLEAN
+    (24) value -> . OFFSET_DATE_TIME
+    (25) value -> . LOCAL_DATE_TIME
+    (26) value -> . LOCAL_DATE
+    (27) value -> . LOCAL_TIME
+    (28) value -> . INTEGER
+    (29) value -> . HEX_INTEGER
+    (30) value -> . OCT_INTEGER
+    (31) value -> . BIN_INTEGER
+    (32) value -> . array
+    (33) value -> . FLOAT
+    (34) value -> . inline_table
+    (35) array -> . LBRACKET value_list RBRACKET
+    (41) inline_table -> . LBRACE inline_list RBRACE
+
+    STRING          shift and go to state 28
+    LITERAL_STRING  shift and go to state 29
+    MULTILINE_STRING shift and go to state 30
+    LITERAL_MULTILINE_STRING shift and go to state 31
+    BOOLEAN         shift and go to state 32
+    OFFSET_DATE_TIME shift and go to state 33
+    LOCAL_DATE_TIME shift and go to state 34
+    LOCAL_DATE      shift and go to state 35
+    LOCAL_TIME      shift and go to state 36
+    INTEGER         shift and go to state 37
+    HEX_INTEGER     shift and go to state 38
+    OCT_INTEGER     shift and go to state 39
+    BIN_INTEGER     shift and go to state 40
+    FLOAT           shift and go to state 42
+    LBRACKET        shift and go to state 44
+    LBRACE          shift and go to state 10
+
+    value                          shift and go to state 51
+    value_list                     shift and go to state 57
+    array                          shift and go to state 41
+    inline_table                   shift and go to state 43
+
+state 56
+
+    (42) table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .
+
+    LBRACKET        reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+    LBRACE          reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+    FLOAT           reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+    STRING          reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+    LITERAL_STRING  reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+    IDENTIFIER      reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+    INTEGER         reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+    $end            reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+    COMMA           reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+    RBRACE          reduce using rule 42 (table_array -> LBRACKET LBRACKET key RBRACKET RBRACKET .)
+
+
+state 57
+
+    (37) value_list -> value COMMA value_list .
+
+    RBRACKET        reduce using rule 37 (value_list -> value COMMA value_list .)
+

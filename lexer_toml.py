@@ -1,9 +1,7 @@
 import ply.lex as lex
-import unicodedata
 
 
 class Lexer:
-    # Tokens tuple declaration
     tokens = (
         'STRING',
         'LITERAL_STRING',
@@ -39,14 +37,13 @@ class Lexer:
         t.lexer.lineno += len(t.value)
 
     def t_MULTILINE_STRING(self, t):
-        r'\"\"\"[^\"]*\"\"\"'
+        r'\"{3}[^\"]*\"{3}'
         return t
 
     def t_LITERAL_MULTILINE_STRING(self, t):
-        r'\'\'\'[^\']*\'\'\''
+        r'\'{3}[^\']*\'{3}'
         return t
 
-    # Tokens regex declaration
     def t_STRING(self, t):
         r'"[^\"\n\r]*"'
         return t
@@ -82,7 +79,6 @@ class Lexer:
     def t_COMMENT(self, t):
         r'\#.*'
         t.lexer.skip(1)
-
 
     def t_LITERAL_STRING(self, t):
         r'\'[^\'\n\r]*\''
@@ -156,7 +152,6 @@ class Lexer:
     # Error handling
     def t_error(self, t):
         print("Illegal character '%s'" % t.value[0])
-        t.lexer.skip(1)
 
     def token(self):
         return self.lex.token()
