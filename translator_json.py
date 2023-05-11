@@ -25,16 +25,6 @@ def get_dict(key_list, dict):
     return current_dict
 
 
-def get_dict_as_array(dict):
-    """
-    Returns the dictionary's values as an array
-    :param dict: dictionary to convert
-    :return: modified dictionary
-    """
-    for key, value in dict.items():
-        dict[key] = [v for v in value]
-
-
 def escape_newlines(ml_string):
     chunks = ml_string.split('\n')
     if len(chunks) > 1:
@@ -52,8 +42,6 @@ class JSONTranslator(TranslatorUnit):
         self.table_arrays = {}
         self.current_table_array = self.table_arrays
         self.current_array = None
-
-        self.array = False
 
     def translate(self, list_):
         for node in list_:
@@ -80,7 +68,6 @@ class JSONTranslator(TranslatorUnit):
     def table(self, table: Table):
         translated_keys = [self.translate_key(key) for key in table.key_list]
         self.current_dict = get_dict(translated_keys, self.tables)
-        self.array = False
 
     def translate_key(self, key: Key):
         return self.translate_value(key.value)
@@ -122,15 +109,18 @@ class JSONTranslator(TranslatorUnit):
 
     def table_array(self, table_array: TableArray):
         translated_keys = [self.translate_key(key) for key in table_array.key_list]
-        self.current_table_array = get_dict(translated_keys[:-1], self.table_arrays)
+
+        last_key = translated_keys[-1]
+        key_path = translated_keys[:-1]
+
+        self.current_table_array = get_dict(key_path, self.table_arrays)
 
         if translated_keys[-1] not in self.current_table_array:
-            self.current_table_array[translated_keys[-1]] = []
+            self.current_table_array[last_key] = []
+
         self.current_dict = {}
-        self.current_array = self.current_table_array[translated_keys[-1]]
+        self.current_array = self.current_table_array[last_key]
         self.current_array.append(self.current_dict)
-        self.array = True
 
     def get_result(self):
-        # get_dict_as_array(self.table_arrays)
         return json.dumps({**self.tables, **self.table_arrays}, indent=4, ensure_ascii=False)

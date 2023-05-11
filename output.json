@@ -1,0 +1,19 @@
+{
+    "hello": {
+        "world": {
+            "my_name": {
+                "is": "John Doe"
+            }
+        }
+    },
+    "fruit": [
+        {
+            "apple": "red"
+        },
+        {
+            "apple": {
+                "color": "green"
+            }
+        }
+    ]
+}

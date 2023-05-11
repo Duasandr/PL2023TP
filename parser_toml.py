@@ -11,12 +11,12 @@ from translator_json import JSONTranslator
 
 
 class Parser:
-    def __init__(self, lang='JSON'):
+    def __init__(self, lang='json'):
         self.tokens = Lexer.tokens
         self.lexer = Lexer()  # Create a lexer object using lex.lex()
         self.parser = yacc.yacc(module=self)
 
-        if lang == 'JSON':
+        if lang.lower() == 'json':
             self.translation_unit = JSONTranslator()
 
     # Parsing rules
