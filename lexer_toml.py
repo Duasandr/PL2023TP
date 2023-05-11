@@ -30,7 +30,7 @@ class Lexer:
     )
     t_ignore = ' \t'
 
-    # Tokens regex declaration
+    # Tokens regex definitions
 
     def t_NEWLINE(self, t):
         r'[\n\r]+'
@@ -46,6 +46,10 @@ class Lexer:
 
     def t_STRING(self, t):
         r'"[^\"\n\r]*"'
+        return t
+
+    def t_LITERAL_STRING(self, t):
+        r'\'[^\'\n\r]*\''
         return t
 
     def t_DOT(self, t):
@@ -79,10 +83,6 @@ class Lexer:
     def t_COMMENT(self, t):
         r'\#.*'
         t.lexer.skip(1)
-
-    def t_LITERAL_STRING(self, t):
-        r'\'[^\'\n\r]*\''
-        return t
 
     def t_OFFSET_DATE_TIME(self, t):
         # This one is just LOCAL_DATE_TIME with an optional offset

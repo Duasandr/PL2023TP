@@ -1,4 +1,9 @@
 class Value:
+    """
+    Value class
+    Contains a type and a value
+    Example: Value: type:integer value:1
+    """
     def __init__(self, type_, value):
         self.type = type_
         self.value = value

@@ -2,9 +2,9 @@ from key import Key
 
 class Table:
     """
-    A table is a list of keys and values.
-
-    e.g. [key1, key2, ...] [key_val1, key_val1, ...]
+    Table class
+    Contains a list of keys
+    Example: Table: [Key('string', "hello"), Key('string', "world")]
     """
     def __init__(self, table_key_list: [Key]):
         self.key_list = table_key_list

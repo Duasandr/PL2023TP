@@ -5,7 +5,7 @@ class KeyVal:
     Keys can be simple or dotted. Dotted keys are represented
     as a list of simple keys, that is why the key_list is a list.
     e.g.
-        KeyVal: [key1, key2, ...] = value
+        KeyVal(Key('string', "hello"), Value('integer', 1))
     """
     def __init__(self, key_list, value):
         self.key_list = key_list
