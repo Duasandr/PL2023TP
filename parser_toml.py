@@ -122,8 +122,16 @@ class Parser:
         p[0] = Value("inline_table", p[1])
 
     def p_array(self, p):
-        """array : LBRACKET value_list RBRACKET"""
+        """array : LBRACKET array_content"""
         p[0] = Array(p[2])
+
+    def p_array_content(self, p):
+        """array_content : RBRACKET"""
+        p[0] = []
+
+    def p_array_content_2(self, p):
+        """array_content : value_list RBRACKET"""
+        p[0] = p[1]
 
     def p_value_list(self, p):
         """value_list : value"""
@@ -137,6 +145,18 @@ class Parser:
         """table : LBRACKET key RBRACKET"""
         p[0] = Table(p[2])
 
+    def p_inline_table(self, p):
+        """inline_table : LBRACE inline_content"""
+        p[0] = InlineTable(p[2])
+
+    def p_inline_content(self, p):
+        """inline_content : RBRACE"""
+        p[0] = []
+
+    def p_inline_content_2(self, p):
+        """inline_content : inline_list RBRACE"""
+        p[0] = p[1]
+
     def p_inline_list(self, p):
         """inline_list : expression"""
         p[0] = [p[1]]
@@ -144,10 +164,6 @@ class Parser:
     def p_inline_list_2(self, p):
         """inline_list : expression COMMA inline_list"""
         p[0] = [p[1]] + p[3]
-
-    def p_inline_table(self, p):
-        """inline_table : LBRACE inline_list RBRACE"""
-        p[0] = InlineTable(p[2])
 
     def p_table_array(self, p):
         """table_array : LBRACKET LBRACKET key RBRACKET RBRACKET"""
